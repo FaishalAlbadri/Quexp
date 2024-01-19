@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Quexp</string>
+
+    <string name="intro_button_start">Get Started</string>
+
+    <string name="text_masuk">Masuk</string>
+    <string name="text_daftar">Daftar</string>
+
+    <string name="error_email">Masukkan Email yang benar!</string>
+    <string name="error_password">Password tidak boleh kurang dari 8</string>
+    <string name="error_field">Bagian ini harus diisi!</string>
+    <string name="error_repeat_password">Password tidak cocok!</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="masukkan_password">Masukkan Password</string>
+    <string name="masukkan_email">Masukkan Email</string>
+
+    <string name="btn_login_register">
+    <![CDATA[
+    <font color=#000000>%1$s </font><font color=#4285F4>%2$s</font>
+    ]]>
+  </string>
+    <string name="text_allow_location">Allow Location</string>
+    <string name="permission_location_description">Jangan khawatir data Anda bersifat pribadi</string>
+</resources>

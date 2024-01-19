@@ -1,0 +1,33 @@
+package com.bintang.quexp.util.viewmodel
+
+import android.content.Context
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.bintang.quexp.ui.login.LoginViewModel
+import com.bintang.quexp.ui.splashscreen.SplashScreenViewModel
+import com.bintang.quexp.util.UserPreferences
+
+class ViewModelFactory(private val userPreferences: UserPreferences) : ViewModelProvider.NewInstanceFactory() {
+    companion object {
+        @Volatile
+        private var instance: ViewModelFactory? = null
+        fun getInstance(context: Context): ViewModelFactory {
+            return instance ?: synchronized(this) {
+                instance ?: ViewModelFactory(Injection.provideRepository(context))
+            }.also { instance = it }
+        }
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return when {
+            modelClass.isAssignableFrom(SplashScreenViewModel::class.java) -> {
+                SplashScreenViewModel(userPreferences) as T
+            }
+            modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
+                LoginViewModel(userPreferences) as T
+            }
+            else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
+        }
+    }
+}
