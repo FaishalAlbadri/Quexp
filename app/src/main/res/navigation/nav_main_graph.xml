@@ -10,4 +10,9 @@
         android:name="com.bintang.quexp.ui.fragment.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/scan"
+        android:name="com.bintang.quexp.ui.fragment.scan.QrCodeFragment"
+        android:label="fragment_qr_code"
+        tools:layout="@layout/fragment_qr_code" /><action android:id="@+id/action_global_scan" app:destination="@id/scan"/>
 </navigation>

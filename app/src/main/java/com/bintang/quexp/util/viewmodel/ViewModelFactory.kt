@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bintang.quexp.ui.fragment.home.HomeViewModel
+import com.bintang.quexp.ui.fragment.scan.QrCodeViewModel
 import com.bintang.quexp.ui.login.LoginViewModel
 import com.bintang.quexp.ui.splashscreen.SplashScreenViewModel
 import com.bintang.quexp.util.UserPreferences
@@ -30,6 +31,9 @@ class ViewModelFactory(private val userPreferences: UserPreferences) : ViewModel
             }
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(userPreferences) as T
+            }
+            modelClass.isAssignableFrom(QrCodeViewModel::class.java) -> {
+                QrCodeViewModel(userPreferences) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
