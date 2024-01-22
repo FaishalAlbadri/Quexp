@@ -70,4 +70,5 @@ dependencies {
 
     implementation("com.github.yuriy-budiyev:code-scanner:2.3.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.gorisse.thomas.sceneform:sceneform:1.23.0")
 }

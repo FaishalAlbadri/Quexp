@@ -15,4 +15,9 @@
         android:name="com.bintang.quexp.ui.fragment.scan.QrCodeFragment"
         android:label="fragment_qr_code"
         tools:layout="@layout/fragment_qr_code" /><action android:id="@+id/action_global_scan" app:destination="@id/scan"/>
+    <fragment
+        android:id="@+id/ar"
+        android:name="com.bintang.quexp.ui.fragment.ar.AugmentedRealityFragment"
+        android:label="fragment_augmented_reality"
+        tools:layout="@layout/fragment_augmented_reality" />
 </navigation>
