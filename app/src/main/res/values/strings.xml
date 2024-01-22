@@ -23,4 +23,9 @@
   </string>
     <string name="text_allow_location">Allow Location</string>
     <string name="permission_location_description">Jangan khawatir data Anda bersifat pribadi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_welcome">Welcome</string>
+    <string name="text_roadmap">Road Map</string>
+    <string name="text_klik_disini">Klik Disini</string>
 </resources>

@@ -3,6 +3,7 @@ package com.bintang.quexp.util.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.bintang.quexp.ui.fragment.home.HomeViewModel
 import com.bintang.quexp.ui.login.LoginViewModel
 import com.bintang.quexp.ui.splashscreen.SplashScreenViewModel
 import com.bintang.quexp.util.UserPreferences
@@ -26,6 +27,9 @@ class ViewModelFactory(private val userPreferences: UserPreferences) : ViewModel
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(userPreferences) as T
+            }
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                HomeViewModel(userPreferences) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

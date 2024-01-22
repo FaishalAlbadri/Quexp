@@ -36,7 +36,7 @@ class SplashScreenViewModel(private val userPreferences: UserPreferences) : View
             client.enqueue(object : Callback<UserResponse> {
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                     if (response.body()!!.message.equals("Berhasil")) {
-                        _userResponse.value = response.body()!!.userItem!!
+                        _userResponse.value = response.body()!!.userItem
                     } else {
                         _message.value = Event(response.body()?.message.toString())
                         Log.e(

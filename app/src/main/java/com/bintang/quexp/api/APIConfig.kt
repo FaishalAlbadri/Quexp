@@ -25,7 +25,17 @@ import java.util.concurrent.TimeUnit
 interface APIConfig {
 
     companion object {
-        val url = "https://quexp.000webhostapp.com/api/"
+
+        val BASE_URL = "https://quexp.000webhostapp.com/"
+        val BASE_URL_IMG = BASE_URL + "assets/"
+        val URL_API = BASE_URL + "api/"
+        val URL_IMG_NEWS = BASE_URL_IMG + "news/"
+        val URL_IMG_AWARDS = BASE_URL_IMG + "awards/"
+        val URL_IMG_AWARDS_BANNER = URL_IMG_AWARDS + "banner/"
+        val URL_IMG_PLACES = BASE_URL_IMG + "places/"
+        val URL_IMG_PROFILE = BASE_URL_IMG + "profile/"
+        val URL_IMG_QRCODE = BASE_URL_IMG + "qrcode/"
+
         fun build(token: String = ""): APIConfig {
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -42,7 +52,7 @@ interface APIConfig {
                 .build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl(url)
+                .baseUrl(URL_API)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
@@ -93,7 +103,7 @@ interface APIConfig {
      * -----------------------------------  Place API  -----------------------------------
      */
 
-    @GET
+    @GET("places")
     fun places(): Call<PlacesResponse>
 
     @FormUrlEncoded
@@ -112,7 +122,7 @@ interface APIConfig {
      * -----------------------------------  News API  -----------------------------------
      */
 
-    @GET
+    @GET("news")
     fun news(): Call<NewsResponse>
 
     @FormUrlEncoded
