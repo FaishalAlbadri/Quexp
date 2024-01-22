@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Spanned
 import androidx.annotation.IdRes
+import androidx.appcompat.app.AlertDialog
 import androidx.core.text.HtmlCompat
 import androidx.core.view.forEach
 import androidx.navigation.NavController
@@ -69,3 +70,10 @@ fun NavigationUI.setupWithNavController(
 
 fun NavDestination.matchDestination(@IdRes destId: Int): Boolean =
     hierarchy.any { it.id == destId }
+
+fun createAlertDialog(context: Context): AlertDialog {
+    return AlertDialog.Builder(context, R.style.CustomAlertDialog)
+        .setCancelable(false)
+        .setView(R.layout.loading)
+        .create()
+}

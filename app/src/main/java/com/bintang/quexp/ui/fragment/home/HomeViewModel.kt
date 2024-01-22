@@ -47,15 +47,16 @@ class HomeViewModel(private val userPreferences: UserPreferences) : ViewModel() 
                     call: Call<NewsResponse>,
                     response: Response<NewsResponse>
                 ) {
-                    _isLoading.value = false
                     if (response.isSuccessful && response.body() != null) {
                         val newsResponse = response.body()
                         if (newsResponse!!.message.equals("Berhasil")) {
                             _newsResponse.value = newsResponse.news
                         } else {
+                            _isLoading.value = false
                             _message.value = Event(newsResponse.message)
                         }
                     } else {
+                        _isLoading.value = false
                         _message.value = Event(response.message().toString())
                         Log.e(
                             TAG,
@@ -76,7 +77,6 @@ class HomeViewModel(private val userPreferences: UserPreferences) : ViewModel() 
 
     fun awards(){
         viewModelScope.launch {
-            _isLoading.value = true
             val client = APIConfig.build(getTokenUser()).awards(getIdUser())
             client.enqueue(object : Callback<AwardsResponse> {
                 override fun onResponse(

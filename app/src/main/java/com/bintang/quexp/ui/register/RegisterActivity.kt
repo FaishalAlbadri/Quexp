@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import com.bintang.quexp.R
 import com.bintang.quexp.databinding.ActivityRegisterBinding
 import com.bintang.quexp.ui.login.LoginActivity
+import com.bintang.quexp.util.createAlertDialog
 import com.bintang.quexp.util.htmlStringFormat
 
 class RegisterActivity : AppCompatActivity() {
@@ -79,10 +80,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun createLoading() {
-        loading = AlertDialog.Builder(this)
-            .setCancelable(false)
-            .setView(R.layout.loading)
-            .create()
+        loading = createAlertDialog(this)
     }
 
     private fun showLoading(isLoading: Boolean) {

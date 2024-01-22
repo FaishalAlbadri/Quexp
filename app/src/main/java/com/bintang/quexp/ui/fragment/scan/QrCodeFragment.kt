@@ -21,6 +21,7 @@ import androidx.fragment.app.viewModels
 import com.bintang.quexp.R
 import android.provider.Settings
 import com.bintang.quexp.databinding.FragmentQrCodeBinding
+import com.bintang.quexp.util.createAlertDialog
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
@@ -29,6 +30,7 @@ import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.snackbar.Snackbar
 import java.util.Locale
 
 class QrCodeFragment : Fragment() {
@@ -68,7 +70,7 @@ class QrCodeFragment : Fragment() {
             }
             message.observe(viewLifecycleOwner) {
                 it.getContentIfNotHandled()?.let {
-                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                    Snackbar.make(binding.qrcode, it, Snackbar.LENGTH_SHORT).show()
                 }
             }
         }
@@ -219,10 +221,7 @@ class QrCodeFragment : Fragment() {
     }
 
     private fun createLoading() {
-        loading = AlertDialog.Builder(requireContext())
-            .setCancelable(false)
-            .setView(R.layout.loading)
-            .create()
+        loading = createAlertDialog(requireContext())
     }
 
     private fun showLoading(isLoading: Boolean) {

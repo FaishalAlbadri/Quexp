@@ -12,6 +12,7 @@ import com.bintang.quexp.data.local.UserData
 import com.bintang.quexp.databinding.ActivityLoginBinding
 import com.bintang.quexp.ui.home.HomeActivity
 import com.bintang.quexp.ui.register.RegisterActivity
+import com.bintang.quexp.util.createAlertDialog
 import com.bintang.quexp.util.htmlStringFormat
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
 
@@ -80,10 +81,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun createLoading() {
-        loading = AlertDialog.Builder(this)
-            .setCancelable(false)
-            .setView(R.layout.loading)
-            .create()
+        loading = createAlertDialog(this)
     }
 
     private fun showLoading(isLoading: Boolean) {

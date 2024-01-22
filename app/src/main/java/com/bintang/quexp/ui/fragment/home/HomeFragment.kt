@@ -15,6 +15,7 @@ import com.bintang.quexp.api.APIConfig
 import com.bintang.quexp.data.awards.AwardsItem
 import com.bintang.quexp.data.news.NewsItem
 import com.bintang.quexp.databinding.FragmentHomeBinding
+import com.bintang.quexp.util.createAlertDialog
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
 
@@ -92,10 +93,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun createLoading() {
-        loading = AlertDialog.Builder(requireContext())
-            .setCancelable(false)
-            .setView(R.layout.loading)
-            .create()
+        loading = createAlertDialog(requireContext())
     }
 
     private fun showLoading(isLoading: Boolean) {
