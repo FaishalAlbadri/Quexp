@@ -122,18 +122,20 @@
                 tools:text="Berhasil Mengunduh Aplikasi QUEXP" />
 
             <TextView
+                android:id="@+id/btn_roadmap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:background="@drawable/bg_button_accent_circle"
                 android:drawableRight="@drawable/baseline_arrow_forward_24"
                 android:drawablePadding="4dp"
                 android:drawableTint="@color/gray_52"
                 android:fontFamily="@font/poppins"
+                android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
                 android:paddingHorizontal="16dp"
                 android:paddingTop="6dp"
                 android:paddingBottom="2dp"
-                android:layout_margin="8dp"
                 android:text="@string/text_klik_disini"
                 android:textColor="@color/gray_52"
                 android:textSize="16sp"

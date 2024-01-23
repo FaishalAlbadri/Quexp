@@ -1,5 +1,6 @@
 package com.bintang.quexp.ui.fragment.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,12 +10,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bintang.quexp.R
 import com.bintang.quexp.adapter.NewsAdapter
 import com.bintang.quexp.api.APIConfig
 import com.bintang.quexp.data.awards.AwardsItem
 import com.bintang.quexp.data.news.NewsItem
 import com.bintang.quexp.databinding.FragmentHomeBinding
+import com.bintang.quexp.ui.roadmap.RoadmapActivity
 import com.bintang.quexp.util.createAlertDialog
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
@@ -42,8 +43,14 @@ class HomeFragment : Fragment() {
 
         createLoading()
 
+        binding.apply {
+            btnRoadmap.setOnClickListener {
+                startActivity(Intent(requireActivity(), RoadmapActivity::class.java))
+            }
+        }
+
         homeViewModel.apply {
-            getSessionUser().observe(viewLifecycleOwner){
+            getSessionUser().observe(viewLifecycleOwner) {
                 binding.txtUsername.text = it.user_name
             }
 
@@ -81,7 +88,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setNews(it: List<NewsItem>){
+    private fun setNews(it: List<NewsItem>) {
         newsAdapter = NewsAdapter(it)
         binding.rvNews.apply {
             layoutManager = LinearLayoutManager(

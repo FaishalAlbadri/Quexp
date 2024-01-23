@@ -17,5 +17,5 @@ data class RoadmapItem(
 	val idAwardsRule: String,
 
 	@field:SerializedName("awards_value")
-	val awardsValue: Int
+	val awardsValue: Double
 )
