@@ -1,5 +1,6 @@
 package com.bintang.quexp.adapter
 
+import android.graphics.PorterDuff.Mode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,24 +62,10 @@ class RoadmapAdapter(val roadmapList: List<RoadmapItem>) :
                     progressRight.setBackgroundColor(
                         ContextCompat.getColor(
                             itemView.context,
-                            R.color.gray_47
+                            R.color.gray_9a
                         )
                     )
                     imgActive.visibility = View.VISIBLE
-                } else {
-                    progressLeft.setBackgroundColor(
-                        ContextCompat.getColor(
-                            itemView.context,
-                            R.color.gray_47
-                        )
-                    )
-                    progressRight.setBackgroundColor(
-                        ContextCompat.getColor(
-                            itemView.context,
-                            R.color.gray_47
-                        )
-                    )
-                    imgActive.visibility = View.GONE
                 }
 
                 if (position == 0){
@@ -87,9 +74,30 @@ class RoadmapAdapter(val roadmapList: List<RoadmapItem>) :
                 } else if (position == itemCount - 1) {
                     progressLeft.visibility = View.VISIBLE
                     progressRight.visibility = View.INVISIBLE
+                }
+
+                if (progressLeft.visibility == View.INVISIBLE) {
+                    imgHalfRight.visibility = View.VISIBLE
+                    imgHalfLeft.visibility = View.GONE
+                } else if (progressRight.visibility == View.INVISIBLE) {
+                    imgHalfRight.visibility = View.GONE
+                    imgHalfLeft.visibility = View.VISIBLE
+                }
+
+                if (data.awardsValue > 0.0){
+                    if (imgHalfLeft.visibility == View.VISIBLE) {
+                        imgHalfLeft.setColorFilter(ContextCompat.getColor(itemView.context, R.color.colorAccent))
+                    }
+                    if (imgHalfRight.visibility == View.VISIBLE) {
+                        imgHalfRight.setColorFilter(ContextCompat.getColor(itemView.context, R.color.colorAccent))
+                    }
                 } else {
-                    progressRight.visibility = View.VISIBLE
-                    progressLeft.visibility = View.VISIBLE
+                    if (imgHalfLeft.visibility == View.VISIBLE) {
+                        imgHalfLeft.setColorFilter(ContextCompat.getColor(itemView.context, R.color.gray_9a))
+                    }
+                    if (imgHalfRight.visibility == View.VISIBLE) {
+                        imgHalfRight.setColorFilter(ContextCompat.getColor(itemView.context, R.color.gray_9a))
+                    }
                 }
             }
         }

@@ -87,7 +87,7 @@
         android:layout_width="0dp"
         android:layout_height="12dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/gray_47"
+        android:background="@color/gray_9a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/progress_right" />
@@ -97,10 +97,31 @@
         android:layout_width="0dp"
         android:layout_height="12dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/gray_47"
+        android:background="@color/gray_9a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/progress_left"
         app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_half_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/roadmap_half_circle"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_right"
+        app:layout_constraintRight_toLeftOf="@+id/progress_right"
+        app:layout_constraintTop_toTopOf="@+id/progress_right" />
+
+    <ImageView
+        android:id="@+id/img_half_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="180"
+        android:src="@drawable/roadmap_half_circle"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_left"
+        app:layout_constraintLeft_toRightOf="@+id/progress_left"
+        app:layout_constraintTop_toTopOf="@+id/progress_left" />
 
     <ImageView
         android:id="@+id/img_active"
