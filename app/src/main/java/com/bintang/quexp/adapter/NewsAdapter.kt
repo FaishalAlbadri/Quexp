@@ -1,11 +1,13 @@
 package com.bintang.quexp.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bintang.quexp.api.APIConfig.Companion.URL_IMG_NEWS
 import com.bintang.quexp.data.news.NewsItem
 import com.bintang.quexp.databinding.ItemNewsBinding
+import com.bintang.quexp.ui.news.NewsDetailActivity
 import com.bumptech.glide.Glide
 
 class NewsAdapter(val newsList: List<NewsItem>) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
@@ -18,7 +20,7 @@ class NewsAdapter(val newsList: List<NewsItem>) : RecyclerView.Adapter<NewsAdapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(holder){
+        with(holder) {
             val data = newsList.get(position)
             binding.apply {
                 txtTitle.text = data.newsTitle
@@ -28,7 +30,15 @@ class NewsAdapter(val newsList: List<NewsItem>) : RecyclerView.Adapter<NewsAdapt
                     .into(imgNews)
 
                 layout.setOnClickListener {
-
+                    itemView.context.startActivity(
+                        Intent(
+                            itemView.context,
+                            NewsDetailActivity::class.java
+                        )
+                            .putExtra("title", data.newsTitle)
+                            .putExtra("img", data.newsImg)
+                            .putExtra("desc", data.newsDesc)
+                    )
                 }
             }
         }

@@ -60,14 +60,14 @@ class AugmentedRealityFragment : Fragment() {
 
     private suspend fun loadModels() {
         model = ModelRenderable.builder()
-            .setSource(context, Uri.parse("models/candi_prambanan.glb"))
+            .setSource(requireContext(), Uri.parse("models/candi_prambanan.glb"))
             .setIsFilamentGltf(true)
             .await()
     }
 
     private fun onTapPlane(hitResult: HitResult, plane: Plane, motionEvent: MotionEvent) {
         if (model == null) {
-            Toast.makeText(context, "Loading...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Loading...", Toast.LENGTH_SHORT).show()
             return
         }
 
