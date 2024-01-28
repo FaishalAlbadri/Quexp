@@ -7,6 +7,7 @@ import com.bintang.quexp.ui.fragment.awards.AwardsViewModel
 import com.bintang.quexp.ui.fragment.home.HomeViewModel
 import com.bintang.quexp.ui.fragment.profile.ProfileViewModel
 import com.bintang.quexp.ui.fragment.scan.QrCodeViewModel
+import com.bintang.quexp.ui.fragment.visited.VisitedViewModel
 import com.bintang.quexp.ui.login.LoginViewModel
 import com.bintang.quexp.ui.roadmap.RoadmapViewModel
 import com.bintang.quexp.ui.splashscreen.SplashScreenViewModel
@@ -46,6 +47,9 @@ class ViewModelFactory(private val userPreferences: UserPreferences) : ViewModel
             }
             modelClass.isAssignableFrom(AwardsViewModel::class.java) -> {
                 AwardsViewModel(userPreferences) as T
+            }
+            modelClass.isAssignableFrom(VisitedViewModel::class.java) -> {
+                VisitedViewModel(userPreferences) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

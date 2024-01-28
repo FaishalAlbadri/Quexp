@@ -7,6 +7,9 @@ data class VisitedItem(
 	@field:SerializedName("place_title")
 	val placeTitle: String,
 
+	@field:SerializedName("place_rating")
+	val placeRating: String,
+
 	@field:SerializedName("visited_created")
 	val visitedCreated: String,
 

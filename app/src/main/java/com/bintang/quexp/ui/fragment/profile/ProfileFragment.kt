@@ -34,8 +34,8 @@ class ProfileFragment : Fragment() {
     private val profileViewModel: ProfileViewModel by viewModels { viewModel }
     private lateinit var loading: AlertDialog
     val pageContent = arrayOf(
-        "Badges",
-        "Visited"
+        "Lencana",
+        "Dikunjungi"
     )
 
     override fun onCreateView(
