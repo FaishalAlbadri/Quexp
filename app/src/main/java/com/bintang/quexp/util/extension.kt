@@ -1,6 +1,11 @@
 package com.bintang.quexp.util
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffXfermode
 import android.os.Bundle
 import android.text.Spanned
 import androidx.annotation.IdRes
@@ -76,4 +81,38 @@ fun createAlertDialog(context: Context): AlertDialog {
         .setCancelable(false)
         .setView(R.layout.loading)
         .create()
+}
+
+fun Bitmap.createBitmapWithBorder(borderSize: Float, borderColor: Int): Bitmap {
+    val borderOffset = (borderSize * 2).toInt()
+    val halfWidth = width / 2
+    val halfHeight = height / 2
+    val circleRadius = Math.min(halfWidth, halfHeight).toFloat()
+    val newBitmap = Bitmap.createBitmap(
+        width + borderOffset,
+        height + borderOffset,
+        Bitmap.Config.ARGB_8888
+    )
+
+    val centerX = halfWidth + borderSize
+    val centerY = halfHeight + borderSize
+
+    val paint = Paint()
+    val canvas = Canvas(newBitmap).apply {
+        drawARGB(0, 0, 0, 0)
+    }
+
+    paint.isAntiAlias = true
+    paint.style = Paint.Style.FILL
+    canvas.drawCircle(centerX, centerY, circleRadius, paint)
+
+    paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+    canvas.drawBitmap(this, borderSize, borderSize, paint)
+
+    paint.xfermode = null
+    paint.style = Paint.Style.STROKE
+    paint.color = borderColor
+    paint.strokeWidth = borderSize
+    canvas.drawCircle(centerX, centerY, circleRadius, paint)
+    return newBitmap
 }

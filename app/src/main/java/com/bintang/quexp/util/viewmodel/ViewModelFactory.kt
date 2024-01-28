@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bintang.quexp.ui.fragment.home.HomeViewModel
+import com.bintang.quexp.ui.fragment.profile.ProfileViewModel
 import com.bintang.quexp.ui.fragment.scan.QrCodeViewModel
 import com.bintang.quexp.ui.login.LoginViewModel
 import com.bintang.quexp.ui.roadmap.RoadmapViewModel
@@ -38,6 +39,9 @@ class ViewModelFactory(private val userPreferences: UserPreferences) : ViewModel
             }
             modelClass.isAssignableFrom(RoadmapViewModel::class.java) -> {
                 RoadmapViewModel(userPreferences) as T
+            }
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(userPreferences) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

@@ -20,4 +20,9 @@
         android:name="com.bintang.quexp.ui.fragment.ar.AugmentedRealityFragment"
         android:label="fragment_augmented_reality"
         tools:layout="@layout/fragment_augmented_reality" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.bintang.quexp.ui.fragment.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
