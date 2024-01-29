@@ -56,4 +56,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <include
+        android:id="@+id/loading"
+        layout="@layout/loading_fullscreen" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

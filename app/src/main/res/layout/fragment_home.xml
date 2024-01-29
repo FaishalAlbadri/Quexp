@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.home.HomeFragment">
 
+
     <TextView
         android:id="@+id/txt_welcome"
         android:layout_width="match_parent"
@@ -78,11 +79,13 @@
         app:layout_constraintTop_toBottomOf="@+id/rv_news" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cv_home"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="24dp"
         app:cardCornerRadius="10dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="2:3"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -146,5 +149,9 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <include
+        android:id="@+id/loading"
+        layout="@layout/loading_fullscreen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

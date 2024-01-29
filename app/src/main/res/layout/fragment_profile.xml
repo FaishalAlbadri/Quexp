@@ -125,4 +125,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tab_profile" />
 
+    <include
+        android:id="@+id/loading"
+        layout="@layout/loading_fullscreen" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

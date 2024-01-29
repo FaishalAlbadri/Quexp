@@ -27,7 +27,6 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: ViewModelFactory
     private val homeViewModel: HomeViewModel by viewModels { viewModel }
     private lateinit var newsAdapter: NewsAdapter
-    private lateinit var loading: AlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,8 +39,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelFactory.getInstance(requireContext())
-
-        createLoading()
 
         binding.apply {
             btnRoadmap.setOnClickListener {
@@ -99,13 +96,20 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun createLoading() {
-        loading = createAlertDialog(requireContext())
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.apply {
+                loading.root.visibility = View.VISIBLE
+                cvHome.visibility = View.GONE
+            }
+        } else {
+            binding.apply {
+                loading.root.visibility = View.GONE
+                cvHome.visibility = View.VISIBLE
+            }
+        }
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading) loading.show() else loading.dismiss()
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

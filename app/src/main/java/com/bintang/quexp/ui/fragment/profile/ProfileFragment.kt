@@ -32,7 +32,6 @@ class ProfileFragment : Fragment() {
     val binding get() = _binding!!
     private lateinit var viewModel: ViewModelFactory
     private val profileViewModel: ProfileViewModel by viewModels { viewModel }
-    private lateinit var loading: AlertDialog
     val pageContent = arrayOf(
         "Lencana",
         "Dikunjungi"
@@ -49,7 +48,6 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelFactory.getInstance(requireContext())
-        createLoading()
 
         binding.apply {
             btnEditProfile.setOnClickListener {
@@ -128,13 +126,14 @@ class ProfileFragment : Fragment() {
             })
     }
 
-    private fun createLoading() {
-        loading = createAlertDialog(requireContext())
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loading.root.visibility = View.VISIBLE
+        } else {
+            binding.loading.root.visibility = View.GONE
+        }
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading) loading.show() else loading.dismiss()
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

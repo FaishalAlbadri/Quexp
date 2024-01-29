@@ -2,6 +2,7 @@ package com.bintang.quexp.ui.roadmap
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
@@ -28,7 +29,6 @@ class RoadmapActivity : AppCompatActivity() {
     private lateinit var viewModel: ViewModelFactory
     private val roadmapViewModel: RoadmapViewModel by viewModels { viewModel }
     private lateinit var roadmapAdapter: RoadmapAdapter
-    private lateinit var loading: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,6 @@ class RoadmapActivity : AppCompatActivity() {
         _binding = ActivityRoadmapBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelFactory.getInstance(this)
-        createLoading()
 
         binding.apply {
             btnBack.setOnClickListener {
@@ -72,11 +71,12 @@ class RoadmapActivity : AppCompatActivity() {
         }
     }
 
-    private fun createLoading() {
-        loading = createAlertDialog(this)
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loading.root.visibility = View.VISIBLE
+        } else {
+            binding.loading.root.visibility = View.GONE
+        }
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading) loading.show() else loading.dismiss()
-    }
 }
