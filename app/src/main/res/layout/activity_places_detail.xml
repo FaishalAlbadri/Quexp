@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.places.PlacesDetailActivity">
+
+    <include
+        android:id="@+id/toolbar_places"
+        layout="@layout/base_toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_places"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_places">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_places"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="16dp"
+                app:layout_constraintDimensionRatio="3:2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_places"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:fontFamily="@font/inter"
+                android:justificationMode="inter_word"
+                android:maxLines="1"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@+id/img_places"
+                app:layout_constraintRight_toLeftOf="@+id/txt_rating"
+                app:layout_constraintTop_toBottomOf="@+id/img_places"
+                tools:text="Suraloka Zoo" />
+
+            <TextView
+                android:id="@+id/txt_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:drawableLeft="@drawable/ic_star_border"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/inter"
+                android:gravity="center"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_places"
+                app:layout_constraintRight_toRightOf="@+id/img_places"
+                app:layout_constraintTop_toTopOf="@+id/txt_places"
+                tools:text="4.9"
+
+                />
+
+            <TextView
+                android:id="@+id/txt_city"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/baseline_location"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/inter"
+                android:maxLines="1"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="@+id/img_places"
+                app:layout_constraintRight_toRightOf="@+id/img_places"
+                app:layout_constraintTop_toBottomOf="@+id/txt_places"
+                tools:text="Suraloka Zoo" />
+
+
+            <TextView
+                android:id="@+id/txt_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/montserrat"
+                android:justificationMode="inter_word"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/img_places"
+                app:layout_constraintRight_toRightOf="@+id/img_places"
+                app:layout_constraintTop_toBottomOf="@+id/txt_city"
+                tools:text="The 135-foot catamaran The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations features space-age modernism and above-deck sleeping accommodations\n\nThe 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_maps"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/colorAccent"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingVertical="10dp"
+        android:text="@string/text_map"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:cornerRadius="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

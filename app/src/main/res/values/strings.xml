@@ -27,4 +27,5 @@
     <string name="text_welcome">Welcome</string>
     <string name="text_roadmap">Road Map</string>
     <string name="text_klik_disini">Klik Disini</string>
+    <string name="text_map">Map</string>
 </resources>

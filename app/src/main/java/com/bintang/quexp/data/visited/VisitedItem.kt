@@ -16,6 +16,15 @@ data class VisitedItem(
 	@field:SerializedName("id_visited")
 	val idVisited: String,
 
+	@field:SerializedName("place_desc")
+	val placeDesc: String,
+
+	@field:SerializedName("place_gmaps")
+	val placeGmaps: String,
+
+	@field:SerializedName("place_city")
+	val placeCity: String,
+
 	@field:SerializedName("place_img")
 	val placeImg: String
 )

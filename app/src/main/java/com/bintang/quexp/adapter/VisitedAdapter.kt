@@ -1,5 +1,6 @@
 package com.bintang.quexp.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -7,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bintang.quexp.api.APIConfig.Companion.URL_IMG_PLACES
 import com.bintang.quexp.data.visited.VisitedItem
 import com.bintang.quexp.databinding.ItemVisitedBinding
+import com.bintang.quexp.ui.news.NewsDetailActivity
+import com.bintang.quexp.ui.places.PlacesDetailActivity
 import com.bumptech.glide.Glide
 
 class VisitedAdapter(val visitedList: List<VisitedItem>) :
@@ -31,7 +34,18 @@ class VisitedAdapter(val visitedList: List<VisitedItem>) :
                     .into(imgPlaces)
 
                 layout.setOnClickListener {
-                    Toast.makeText(itemView.context, "Under Development", Toast.LENGTH_SHORT).show()
+                    itemView.context.startActivity(
+                        Intent(
+                            itemView.context,
+                            PlacesDetailActivity::class.java
+                        )
+                            .putExtra("place_title", data.placeTitle)
+                            .putExtra("place_rating", data.placeRating)
+                            .putExtra("place_desc", data.placeDesc)
+                            .putExtra("place_gmaps", data.placeGmaps)
+                            .putExtra("place_city", data.placeCity)
+                            .putExtra("place_img", data.placeImg)
+                    )
                 }
             }
         }
