@@ -103,8 +103,14 @@ interface APIConfig {
      * -----------------------------------  Place API  -----------------------------------
      */
 
-    @GET("places")
-    fun places(): Call<PlacesResponse>
+    @FormUrlEncoded
+    @POST("places")
+    fun places(
+        @Field("key") key: String
+    ): Call<PlacesResponse>
+
+    @GET("places/populer")
+    fun placesPopuler(): Call<PlacesResponse>
 
     @FormUrlEncoded
     @POST("places/detail")

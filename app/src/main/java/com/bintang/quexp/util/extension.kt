@@ -7,7 +7,12 @@ import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.os.Bundle
+import android.os.SystemClock
+import android.text.Editable
 import android.text.Spanned
+import android.text.TextWatcher
+import android.view.View
+import android.widget.EditText
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.text.HtmlCompat
@@ -19,6 +24,8 @@ import androidx.navigation.ui.NavigationUI
 import com.bintang.quexp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.lang.ref.WeakReference
+import java.util.Timer
+import java.util.TimerTask
 
 fun htmlStringFormat(context: Context, text1: String, text2: String): Spanned {
     return HtmlCompat.fromHtml(
@@ -115,4 +122,25 @@ fun Bitmap.createBitmapWithBorder(borderSize: Float, borderColor: Int): Bitmap {
     paint.strokeWidth = borderSize
     canvas.drawCircle(centerX, centerY, circleRadius, paint)
     return newBitmap
+}
+
+fun EditText.onTextChangedListener(debounceTime: Long = 500L, action: () -> Unit) {
+    this.addTextChangedListener(object : TextWatcher {
+        private var timer = Timer()
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        }
+
+        override fun afterTextChanged(s: Editable?) {
+            timer.cancel()
+            timer = Timer()
+            timer.schedule(object : TimerTask() {
+                override fun run() {
+                    action()
+                }
+            }, debounceTime)
+        }
+    })
 }

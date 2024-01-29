@@ -7,6 +7,9 @@ data class PlacesResponse(
 	@field:SerializedName("places")
 	val places: List<PlacesItem>,
 
+	@field:SerializedName("places_populer")
+	val placesPopuler: List<PlacesItem>,
+
 	@field:SerializedName("message")
 	val message: String
 )
