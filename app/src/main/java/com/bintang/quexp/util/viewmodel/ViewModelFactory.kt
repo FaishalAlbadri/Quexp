@@ -12,6 +12,7 @@ import com.bintang.quexp.ui.fragment.visited.VisitedViewModel
 import com.bintang.quexp.ui.login.LoginViewModel
 import com.bintang.quexp.ui.notification.NotificationViewModel
 import com.bintang.quexp.ui.roadmap.RoadmapViewModel
+import com.bintang.quexp.ui.share.ShareViewModel
 import com.bintang.quexp.ui.splashscreen.SplashScreenViewModel
 import com.bintang.quexp.util.UserPreferences
 
@@ -58,6 +59,9 @@ class ViewModelFactory(private val userPreferences: UserPreferences) : ViewModel
             }
             modelClass.isAssignableFrom(NotificationViewModel::class.java) -> {
                 NotificationViewModel(userPreferences) as T
+            }
+            modelClass.isAssignableFrom(ShareViewModel::class.java) -> {
+                ShareViewModel(userPreferences) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

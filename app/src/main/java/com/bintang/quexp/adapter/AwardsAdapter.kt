@@ -1,5 +1,6 @@
 package com.bintang.quexp.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -7,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bintang.quexp.api.APIConfig.Companion.URL_IMG_AWARDS
 import com.bintang.quexp.data.awards.AwardsItem
 import com.bintang.quexp.databinding.ItemAwardsBinding
+import com.bintang.quexp.ui.news.NewsDetailActivity
+import com.bintang.quexp.ui.share.ShareAwardsActivity
 import com.bumptech.glide.Glide
 
 class AwardsAdapter(val awardsList: List<AwardsItem>) :
@@ -30,7 +33,15 @@ class AwardsAdapter(val awardsList: List<AwardsItem>) :
                     .into(imgAwards)
 
                 layout.setOnClickListener {
-                    Toast.makeText(itemView.context, "Under Development", Toast.LENGTH_SHORT).show()
+                    itemView.context.startActivity(
+                        Intent(
+                            itemView.context,
+                            ShareAwardsActivity::class.java
+                        )
+                            .putExtra("title", data.awardsRuleTitle)
+                            .putExtra("img", data.awardsRuleImg)
+                            .putExtra("desc", data.awardsRuleDesc)
+                    )
                 }
             }
         }
