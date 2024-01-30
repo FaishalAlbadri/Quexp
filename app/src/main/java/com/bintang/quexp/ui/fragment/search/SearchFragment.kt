@@ -5,15 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bintang.quexp.adapter.PlacesAdapter
 import com.bintang.quexp.adapter.PlacesSearchAdapter
 import com.bintang.quexp.data.places.PlacesItem
 import com.bintang.quexp.databinding.FragmentSearchBinding
-import com.bintang.quexp.util.createAlertDialog
 import com.bintang.quexp.util.onTextChangedListener
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
 
@@ -95,6 +94,11 @@ class SearchFragment : Fragment() {
         } else {
             binding.loading.root.visibility = View.GONE
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     }
 
     override fun onDestroyView() {
