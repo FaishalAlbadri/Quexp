@@ -10,6 +10,7 @@ import com.bintang.quexp.ui.fragment.scan.QrCodeViewModel
 import com.bintang.quexp.ui.fragment.search.SearchViewModel
 import com.bintang.quexp.ui.fragment.visited.VisitedViewModel
 import com.bintang.quexp.ui.login.LoginViewModel
+import com.bintang.quexp.ui.notification.NotificationViewModel
 import com.bintang.quexp.ui.roadmap.RoadmapViewModel
 import com.bintang.quexp.ui.splashscreen.SplashScreenViewModel
 import com.bintang.quexp.util.UserPreferences
@@ -54,6 +55,9 @@ class ViewModelFactory(private val userPreferences: UserPreferences) : ViewModel
             }
             modelClass.isAssignableFrom(SearchViewModel::class.java) -> {
                 SearchViewModel(userPreferences) as T
+            }
+            modelClass.isAssignableFrom(NotificationViewModel::class.java) -> {
+                NotificationViewModel(userPreferences) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

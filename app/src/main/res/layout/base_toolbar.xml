@@ -25,6 +25,7 @@
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="1"
+        android:fontFamily="@font/inter"
         android:paddingHorizontal="8dp"
         android:textColor="@android:color/black"
         android:textSize="18sp"

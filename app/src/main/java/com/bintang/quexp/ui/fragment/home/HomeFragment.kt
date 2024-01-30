@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bintang.quexp.adapter.NewsAdapter
@@ -15,8 +14,8 @@ import com.bintang.quexp.api.APIConfig
 import com.bintang.quexp.data.awards.AwardsItem
 import com.bintang.quexp.data.news.NewsItem
 import com.bintang.quexp.databinding.FragmentHomeBinding
+import com.bintang.quexp.ui.notification.NotificationActivity
 import com.bintang.quexp.ui.roadmap.RoadmapActivity
-import com.bintang.quexp.util.createAlertDialog
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
 
@@ -43,6 +42,9 @@ class HomeFragment : Fragment() {
         binding.apply {
             btnRoadmap.setOnClickListener {
                 startActivity(Intent(requireActivity(), RoadmapActivity::class.java))
+            }
+            btnNotification.setOnClickListener {
+                startActivity(Intent(requireActivity(), NotificationActivity::class.java))
             }
         }
 
@@ -109,7 +111,6 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
