@@ -24,9 +24,11 @@
     <string name="text_allow_location">Allow Location</string>
     <string name="permission_location_description">Jangan khawatir data Anda bersifat pribadi</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="text_welcome">Welcome</string>
+    <string name="text_welcome">Selamat Datang</string>
     <string name="text_roadmap">Road Map</string>
-    <string name="text_klik_disini">Klik Disini</string>
+    <string name="text_klik_disini">Lihat Misi</string>
+    <string name="text_kembali">Kembali</string>
+    <string name="text_progress_anda">Progress Anda Saat Ini :</string>
     <string name="text_map">Map</string>
     <string name="text_long">The 135-foot catamaran The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations features space-age modernism and above-deck sleeping accommodations\n\nThe 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations</string>
     <string name="text_bar_search">Ke mana Anda\ningin menjelajah hari ini?</string>
