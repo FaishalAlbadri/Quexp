@@ -1,5 +1,6 @@
 package com.bintang.quexp.ui.fragment.profile
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
@@ -16,6 +17,8 @@ import com.bintang.quexp.R
 import com.bintang.quexp.adapter.ViewPagerAdapter
 import com.bintang.quexp.api.APIConfig
 import com.bintang.quexp.databinding.FragmentProfileBinding
+import com.bintang.quexp.ui.setting.ChangeProfileActivity
+import com.bintang.quexp.ui.setting.SettingActivity
 import com.bintang.quexp.util.createAlertDialog
 import com.bintang.quexp.util.createBitmapWithBorder
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
@@ -49,20 +52,11 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelFactory.getInstance(requireContext())
 
-        binding.apply {
-            btnEditProfile.setOnClickListener {
-                Toast.makeText(requireContext(), "Under Development", Toast.LENGTH_SHORT).show()
-            }
-            btnSetting.setOnClickListener {
-                Toast.makeText(requireContext(), "Under Development", Toast.LENGTH_SHORT).show()
-            }
-        }
-
         profileViewModel.apply {
             userResponse.observe(viewLifecycleOwner) {
                 it.apply {
-                    val welcome = "Hello, ${it.userName.split(" ")[0]}"
-                    val location = "${it.userCity}, Indonesia"
+                    val welcome = "Hello, ${userName.split(" ")[0]}"
+                    val location = "${userCity}, Indonesia"
 
                     binding.apply {
                         Glide.with(requireContext())
@@ -70,16 +64,35 @@ class ProfileFragment : Fragment() {
                             .transform(CenterCrop(), RoundedCorners(4))
                             .into(imgBgProfile)
 
-                        txtUsername.text = it.userName
+                        txtUsername.text = userName
                         txtWelcome.text = welcome
                         txtLocation.text = location
-                        imgProfile.loadCircularImage(it.userImg, 8F)
+                        imgProfile.loadCircularImage(userImg, 8F)
 
                         vpProfile.adapter =
                             ViewPagerAdapter(requireActivity().supportFragmentManager, lifecycle)
                         TabLayoutMediator(tabProfile, vpProfile) { tab, position ->
                             tab.text = pageContent[position]
                         }.attach()
+
+                        btnEditProfile.setOnClickListener {
+                            startActivity(
+                                Intent(
+                                    requireContext(),
+                                    ChangeProfileActivity::class.java
+                                )
+                            )
+                        }
+                        btnSetting.setOnClickListener {
+                            startActivity(
+                                Intent(
+                                    requireContext(),
+                                    SettingActivity::class.java
+                                )
+                                    .putExtra("user_name", userName)
+                                    .putExtra("user_img", userImg)
+                            )
+                        }
                     }
 
                 }

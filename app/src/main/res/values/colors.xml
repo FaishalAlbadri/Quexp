@@ -8,8 +8,10 @@
     <color name="colorAccent">#4AA9BC</color>
     <color name="gray_52">#525252</color>
     <color name="gray_9a">#9A9A9A</color>
+    <color name="gray_9a_50">#809A9A9A</color>
 
     <color name="bg_blue">#4285F4</color>
     <color name="bg_red">#F44242</color>
     <color name="goldenYellow">#FCD240</color>
+    <color name="gray_ad">#adadad</color>
 </resources>

@@ -34,6 +34,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.setting.ChangeProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.setting.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.setting.SettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.share.ShareAwardsActivity"
             android:exported="false" />
         <activity

@@ -20,7 +20,7 @@
     <![CDATA[
     <font color=#000000>%1$s </font><font color=#4285F4>%2$s</font>
     ]]>
-  </string>
+    </string>
     <string name="text_allow_location">Allow Location</string>
     <string name="permission_location_description">Jangan khawatir data Anda bersifat pribadi</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -33,4 +33,13 @@
     <string name="text_long">The 135-foot catamaran The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations features space-age modernism and above-deck sleeping accommodations\n\nThe 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations The 135-foot catamaran features space-age modernism and above-deck sleeping accommodations</string>
     <string name="text_bar_search">Ke mana Anda\ningin menjelajah hari ini?</string>
     <string name="text_search">Cari</string>
+    <string name="text_logout">Logout</string>
+    <string name="text_lainnya">Lainnya</string>
+    <string name="text_pengaturan_akun">Pengaturan Akun</string>
+    <string name="text_pengaturan">Pengaturan</string>
+
+    <string name="privacy_policy">
+
+    </string>
+
 </resources>
