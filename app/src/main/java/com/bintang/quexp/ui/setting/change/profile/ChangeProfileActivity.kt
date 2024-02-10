@@ -1,4 +1,4 @@
-package com.bintang.quexp.ui.setting
+package com.bintang.quexp.ui.setting.change.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

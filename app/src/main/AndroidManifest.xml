@@ -34,10 +34,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.setting.ChangeProfileActivity"
+            android:name=".ui.setting.change.profile.ChangeProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.setting.ChangePasswordActivity"
+            android:name=".ui.setting.change.password.ChangePasswordActivity"
             android:exported="false" />
         <activity
             android:name=".ui.setting.SettingActivity"

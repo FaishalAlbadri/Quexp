@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bintang.quexp.api.APIConfig
 import com.bintang.quexp.databinding.ActivitySettingBinding
 import com.bintang.quexp.ui.intro.IntroActivity
+import com.bintang.quexp.ui.setting.change.password.ChangePasswordActivity
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
 

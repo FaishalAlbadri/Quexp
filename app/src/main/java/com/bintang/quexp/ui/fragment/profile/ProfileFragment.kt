@@ -10,16 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.fragment.app.viewModels
 import com.bintang.quexp.R
 import com.bintang.quexp.adapter.ViewPagerAdapter
 import com.bintang.quexp.api.APIConfig
 import com.bintang.quexp.databinding.FragmentProfileBinding
-import com.bintang.quexp.ui.setting.ChangeProfileActivity
+import com.bintang.quexp.ui.setting.change.profile.ChangeProfileActivity
 import com.bintang.quexp.ui.setting.SettingActivity
-import com.bintang.quexp.util.createAlertDialog
 import com.bintang.quexp.util.createBitmapWithBorder
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
