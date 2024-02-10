@@ -95,6 +95,7 @@ class SettingActivity : AppCompatActivity() {
 
             btnLogout.setOnClickListener {
                 settingViewModel.logout()
+                settingViewModel.deleteCache(this@SettingActivity)
                 startActivity(
                     Intent(this@SettingActivity, IntroActivity::class.java)
                         .addFlags(
