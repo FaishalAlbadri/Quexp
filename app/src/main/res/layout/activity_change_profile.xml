@@ -6,4 +6,220 @@
     android:layout_height="match_parent"
     tools:context=".ui.setting.change.profile.ChangeProfileActivity">
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_setting"
+        app:layout_constraintBottom_toBottomOf="@+id/end_of_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/end_of_view"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_profile"
+        app:layout_constraintLeft_toLeftOf="@+id/img_profile"
+        app:layout_constraintRight_toRightOf="@+id/img_profile"
+        app:layout_constraintTop_toTopOf="@+id/img_profile" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gd_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67" />
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/selectableItemBackground"
+        android:foreground="?attr/selectableItemBackground"
+        android:padding="16dp"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="4dp"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="Edit Profil"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+    <ImageView
+        android:id="@+id/img_profile"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:foreground="?attr/selectableItemBackground"
+        android:src="@color/black"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintLeft_toLeftOf="@+id/gd_left"
+        app:layout_constraintRight_toRightOf="@+id/gd_right"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+
+    <TextView
+        android:id="@+id/txt_change_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/poppins"
+        android:text="Ubah Gambar"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_profile" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_change_img">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/text_nama_pengguna_username"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:hintEnabled="false">
+
+            <com.bintang.quexp.util.custom.EditTextCustom
+                android:id="@+id/edt_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/text_nama_pengguna"
+                android:inputType="text"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/email"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:hintEnabled="false">
+
+            <com.bintang.quexp.util.custom.EditTextEmail
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/text_nomor_pengguna"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:hintEnabled="false">
+
+            <com.bintang.quexp.util.custom.EditTextCustom
+                android:id="@+id/edt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/text_nomor_pengguna"
+                android:inputType="number"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/text_kota"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:hintEnabled="false">
+
+            <com.bintang.quexp.util.custom.EditTextCustom
+                android:id="@+id/edt_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/text_kota"
+                android:inputType="text"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#171F1D"
+            android:paddingVertical="10dp"
+            android:text="@string/text_perbarui"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            app:cornerRadius="8dp" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

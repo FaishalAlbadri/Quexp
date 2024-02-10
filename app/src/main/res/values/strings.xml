@@ -41,5 +41,10 @@
     <string name="privacy_policy">
 
     </string>
+    <string name="text_kota">Kota</string>
+    <string name="text_nomor_pengguna">Nomor Pengguna</string>
+    <string name="text_nama_pengguna_username">Nama Pengguna (username)</string>
+    <string name="text_nama_pengguna">Nama Pengguna</string>
+    <string name="text_perbarui">Perbarui</string>
 
 </resources>

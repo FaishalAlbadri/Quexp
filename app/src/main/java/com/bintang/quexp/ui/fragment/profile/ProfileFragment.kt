@@ -1,30 +1,23 @@
 package com.bintang.quexp.ui.fragment.profile
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.fragment.app.viewModels
 import com.bintang.quexp.R
 import com.bintang.quexp.adapter.ViewPagerAdapter
-import com.bintang.quexp.api.APIConfig
 import com.bintang.quexp.databinding.FragmentProfileBinding
 import com.bintang.quexp.ui.setting.change.profile.ChangeProfileActivity
 import com.bintang.quexp.ui.setting.SettingActivity
-import com.bintang.quexp.util.createBitmapWithBorder
+import com.bintang.quexp.util.loadCircularImage
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.BitmapImageViewTarget
 import com.google.android.material.tabs.TabLayoutMediator
 
 class ProfileFragment : Fragment() {
@@ -79,6 +72,11 @@ class ProfileFragment : Fragment() {
                                     requireContext(),
                                     ChangeProfileActivity::class.java
                                 )
+                                    .putExtra("user_img", userImg)
+                                    .putExtra("user_name", userName)
+                                    .putExtra("user_email", userEmail)
+                                    .putExtra("user_phone", userPhone)
+                                    .putExtra("user_city", userCity)
                             )
                         }
                         btnSetting.setOnClickListener {
@@ -107,36 +105,6 @@ class ProfileFragment : Fragment() {
         profileViewModel.profile()
     }
 
-    fun <T> ImageView.loadCircularImage(
-        model: T,
-        borderSize: Float = 0F,
-        borderColor: Int = Color.WHITE
-    ) {
-        Glide.with(context)
-            .asBitmap()
-            .thumbnail(0.1f)
-            .load(APIConfig.URL_IMG_PROFILE + model)
-            .apply(RequestOptions.circleCropTransform())
-            .into(object : BitmapImageViewTarget(this) {
-                override fun setResource(resource: Bitmap?) {
-                    setImageDrawable(
-                        resource?.run {
-                            RoundedBitmapDrawableFactory.create(
-                                resources,
-                                if (borderSize > 0) {
-                                    createBitmapWithBorder(borderSize, borderColor)
-                                } else {
-                                    this
-                                }
-                            ).apply {
-                                isCircular = true
-                            }
-                        }
-                    )
-                }
-            })
-    }
-
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.loading.root.visibility = View.VISIBLE
@@ -145,6 +113,10 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        profileViewModel.profile()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

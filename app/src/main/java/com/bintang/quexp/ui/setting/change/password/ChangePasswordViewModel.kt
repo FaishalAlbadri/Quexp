@@ -45,7 +45,6 @@ class ChangePasswordViewModel(private val userPreferences: UserPreferences) : Vi
                         val baseResponse = response.body()!!
                         if (baseResponse.message.equals("Berhasil ubah kata sandi")) {
                             _userResponse.value = baseResponse
-                            _message.value = Event(baseResponse.message)
                         } else {
                             _message.value = Event(baseResponse.message)
                         }
