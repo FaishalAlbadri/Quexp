@@ -11,7 +11,9 @@ import com.bintang.quexp.util.UserPreferences
 import com.bintang.quexp.util.viewmodel.Event
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,6 +36,9 @@ class ChangeProfileViewModel(private val userPreferences: UserPreferences) : Vie
     fun changeProfile(map: MutableMap<String, RequestBody>) {
         viewModelScope.launch {
             _isLoading.value = true
+            map.put(
+                "id_user", getIdUser().toRequestBody("text/plain".toMediaType())
+            )
             val client = APIConfig.build(getTokenUser())
                 .userEditProfile(map)
             client.enqueue(object : Callback<BaseResponse> {
