@@ -60,7 +60,7 @@ class AugmentedRealityFragment : Fragment() {
 
     private suspend fun loadModels() {
         model = ModelRenderable.builder()
-            .setSource(requireContext(), Uri.parse("models/candi_prambanan.glb"))
+            .setSource(requireContext(), Uri.parse("models/candiapit.glb"))
             .setIsFilamentGltf(true)
             .await()
     }
