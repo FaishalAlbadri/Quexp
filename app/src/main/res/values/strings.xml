@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Quexp</string>
 
-    <string name="intro_button_start">Get Started</string>
+    <string name="intro_button_start">Selanjutnya</string>
+    <string name="intro_button_discover">Mulai Jelajahi</string>
 
     <string name="text_masuk">Masuk</string>
     <string name="text_daftar">Daftar</string>
@@ -21,7 +22,7 @@
     <font color=#000000>%1$s </font><font color=#4285F4>%2$s</font>
     ]]>
     </string>
-    <string name="text_allow_location">Allow Location</string>
+    <string name="text_allow_location">Izinkan Akses Lokasi</string>
     <string name="permission_location_description">Jangan khawatir data Anda bersifat pribadi</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_welcome">Selamat Datang</string>

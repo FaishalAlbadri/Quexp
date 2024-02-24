@@ -68,7 +68,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("javax.annotation:javax.annotation-api:1.3.2")
 
-    implementation("com.github.yuriy-budiyev:code-scanner:2.3.0")
+    implementation("com.github.yuriy-budiyev:code-scanner:2.3.2")
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.gorisse.thomas.sceneform:sceneform:1.23.0")
 }

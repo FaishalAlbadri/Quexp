@@ -80,8 +80,7 @@ class QrCodeFragment : Fragment() {
         codeScanner = CodeScanner(requireContext(), binding.qrcode)
         codeScanner.apply {
             camera = CodeScanner.CAMERA_BACK
-            formats = CodeScanner.ALL_FORMATS
-
+            formats = CodeScanner.TWO_DIMENSIONAL_FORMATS
             autoFocusMode = AutoFocusMode.SAFE
             scanMode = ScanMode.CONTINUOUS
             isAutoFocusEnabled = true

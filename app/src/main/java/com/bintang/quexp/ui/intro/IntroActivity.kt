@@ -50,12 +50,16 @@ class IntroActivity : AppCompatActivity() {
             vpIntro.addOnPageChangeListener(viewListener)
 
             btnStart.setOnClickListener {
-                if (ContextCompat.checkSelfPermission(this@IntroActivity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    startActivity(Intent(this@IntroActivity, LoginActivity::class.java))
-                    finish()
+                if (vpIntro.currentItem == 2) {
+                    if (ContextCompat.checkSelfPermission(this@IntroActivity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        startActivity(Intent(this@IntroActivity, LoginActivity::class.java))
+                        finish()
+                    } else {
+                        startActivity(Intent(this@IntroActivity, LocationActivity::class.java))
+                        finish()
+                    }
                 } else {
-                    startActivity(Intent(this@IntroActivity, LocationActivity::class.java))
-                    finish()
+                    vpIntro.currentItem = vpIntro.currentItem + 1
                 }
             }
         }
@@ -72,14 +76,17 @@ class IntroActivity : AppCompatActivity() {
         override fun onPageSelected(position: Int) {
             binding.apply {
                 if (position == 0) {
+                    btnStart.text = getString(R.string.intro_button_start)
                     dotOne.setImageResource(R.drawable.dot_on)
                     dotTwo.setImageResource(R.drawable.dot_off)
                     dotThree.setImageResource(R.drawable.dot_off)
                 } else if (position == 1) {
+                    btnStart.text = getString(R.string.intro_button_start)
                     dotOne.setImageResource(R.drawable.dot_off)
                     dotTwo.setImageResource(R.drawable.dot_on)
                     dotThree.setImageResource(R.drawable.dot_off)
                 } else {
+                    btnStart.text = getString(R.string.intro_button_discover)
                     dotOne.setImageResource(R.drawable.dot_off)
                     dotTwo.setImageResource(R.drawable.dot_off)
                     dotThree.setImageResource(R.drawable.dot_on)
