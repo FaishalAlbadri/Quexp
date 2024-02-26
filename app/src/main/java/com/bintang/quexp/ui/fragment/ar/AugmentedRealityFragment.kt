@@ -110,6 +110,12 @@ class AugmentedRealityFragment : Fragment() {
             return
         }
 
+        scene.callOnHierarchy { node ->
+            if (node is AnchorNode){
+                node.anchor!!.detach()
+            }
+        }
+
         scene.addChild(AnchorNode(hitResult.createAnchor()).apply {
             addChild(TransformableNode(arFragment.transformationSystem).apply {
                 localScale = Vector3(0.1f, 0.1f, 0.1f)
