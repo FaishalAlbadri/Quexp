@@ -2,6 +2,8 @@ package com.bintang.quexp.api
 
 import com.bintang.quexp.data.BaseResponse
 import com.bintang.quexp.data.awards.AwardsResponse
+import com.bintang.quexp.data.banner.BannerResponse
+import com.bintang.quexp.data.category.CategoryResponse
 import com.bintang.quexp.data.visited.VisitedResponse
 import com.bintang.quexp.data.news.NewsResponse
 import com.bintang.quexp.data.notification.NotificationResponse
@@ -30,6 +32,8 @@ interface APIConfig {
         val BASE_URL_IMG = BASE_URL + "assets/"
         val URL_API = BASE_URL + "api/"
         val URL_IMG_NEWS = BASE_URL_IMG + "news/"
+        val URL_IMG_BANNER = BASE_URL_IMG + "banner/"
+        val URL_IMG_CATEGORY = BASE_URL_IMG + "category/"
         val URL_IMG_AWARDS = BASE_URL_IMG + "awards/"
         val URL_IMG_AWARDS_BANNER = URL_IMG_AWARDS + "banner/"
         val URL_IMG_PLACES = BASE_URL_IMG + "places/"
@@ -187,4 +191,18 @@ interface APIConfig {
     fun notification(
         @Field("id_user") id_user: String
     ): Call<NotificationResponse>
+
+    /**
+     * -----------------------------------  Banner API  -----------------------------------
+     */
+
+    @GET("banner")
+    fun banner(): Call<BannerResponse>
+
+    /**
+     * -----------------------------------  Category API  -----------------------------------
+     */
+
+    @GET("category")
+    fun category(): Call<CategoryResponse>
 }

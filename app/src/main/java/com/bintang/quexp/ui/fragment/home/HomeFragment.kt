@@ -8,16 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bintang.quexp.adapter.NewsAdapter
-import com.bintang.quexp.api.APIConfig
-import com.bintang.quexp.data.awards.AwardsItem
+import com.bintang.quexp.adapter.BannerAdapter
+import com.bintang.quexp.adapter.CategoryRoadmapAdapter
+import com.bintang.quexp.adapter.PlacesAdapter
+import com.bintang.quexp.data.banner.BannerItem
+import com.bintang.quexp.data.category.CategoryItem
 import com.bintang.quexp.data.news.NewsItem
+import com.bintang.quexp.data.places.PlacesItem
 import com.bintang.quexp.databinding.FragmentHomeBinding
 import com.bintang.quexp.ui.notification.NotificationActivity
-import com.bintang.quexp.ui.roadmap.RoadmapActivity
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
-import com.bumptech.glide.Glide
+import com.smarteist.autoimageslider.SliderView
 
 class HomeFragment : Fragment() {
 
@@ -26,6 +30,9 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: ViewModelFactory
     private val homeViewModel: HomeViewModel by viewModels { viewModel }
     private lateinit var newsAdapter: NewsAdapter
+    private lateinit var bannerAdapter: BannerAdapter
+    private lateinit var categoryRoadmapAdapter: CategoryRoadmapAdapter
+    private lateinit var placesAdapter: PlacesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,9 +47,6 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelFactory.getInstance(requireContext())
 
         binding.apply {
-            btnRoadmap.setOnClickListener {
-                startActivity(Intent(requireActivity(), RoadmapActivity::class.java))
-            }
             btnNotification.setOnClickListener {
                 startActivity(Intent(requireActivity(), NotificationActivity::class.java))
             }
@@ -53,12 +57,22 @@ class HomeFragment : Fragment() {
                 binding.txtUsername.text = it.user_name
             }
 
-            awardsResponse.observe(viewLifecycleOwner) {
-                setRoadmap(it)
+            bannerResponse.observe(viewLifecycleOwner) {
+                setBanner(it)
+                category()
+            }
+
+            categoryResponse.observe(viewLifecycleOwner) {
+                setCategoryRoadmap(it)
+                places()
+            }
+
+            placesResponse.observe(viewLifecycleOwner) {
+                setPlaces(it.placesPopuler)
+                news()
             }
 
             newsResponse.observe(viewLifecycleOwner) {
-                awards()
                 setNews(it)
             }
 
@@ -70,20 +84,8 @@ class HomeFragment : Fragment() {
                     Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                 }
             }
-        }
 
-        homeViewModel.news()
-    }
-
-    private fun setRoadmap(it: AwardsItem) {
-        it.apply {
-            binding.apply {
-                txtRoadmapValue.text = awardsRuleDesc
-                Glide.with(requireContext())
-                    .load(APIConfig.URL_IMG_AWARDS_BANNER + awardsRuleImg)
-                    .centerInside()
-                    .into(imgAwards)
-            }
+            banner()
         }
     }
 
@@ -98,16 +100,46 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun setPlaces(it: List<PlacesItem>) {
+        placesAdapter = PlacesAdapter(it)
+        binding.rvPlaces.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = placesAdapter
+        }
+    }
+
+    private fun setCategoryRoadmap(it: List<CategoryItem>) {
+        categoryRoadmapAdapter = CategoryRoadmapAdapter(it)
+        binding.rvRoadmap.apply {
+            layoutManager = GridLayoutManager(requireContext(), 3)
+            adapter = categoryRoadmapAdapter
+        }
+    }
+
+    private fun setBanner(it: List<BannerItem>) {
+        bannerAdapter = BannerAdapter(it)
+        binding.apply {
+            sliderBanner.apply {
+                autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
+                setSliderAdapter(bannerAdapter)
+                scrollTimeInSec = 2
+                isAutoCycle = true
+                startAutoCycle()
+            }
+        }
+    }
+
+
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.apply {
                 loading.root.visibility = View.VISIBLE
-                cvHome.visibility = View.GONE
+                scrollHome.visibility = View.GONE
             }
         } else {
             binding.apply {
                 loading.root.visibility = View.GONE
-                cvHome.visibility = View.VISIBLE
+                scrollHome.visibility = View.VISIBLE
             }
         }
     }
