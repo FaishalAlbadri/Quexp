@@ -59,17 +59,14 @@ class HomeFragment : Fragment() {
 
             bannerResponse.observe(viewLifecycleOwner) {
                 setBanner(it)
-                category()
             }
 
             categoryResponse.observe(viewLifecycleOwner) {
                 setCategoryRoadmap(it)
-                places()
             }
 
             placesResponse.observe(viewLifecycleOwner) {
-                setPlaces(it.placesPopuler)
-                news()
+                setPlaces(it)
             }
 
             newsResponse.observe(viewLifecycleOwner) {
@@ -84,8 +81,7 @@ class HomeFragment : Fragment() {
                     Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                 }
             }
-
-            banner()
+            home()
         }
     }
 

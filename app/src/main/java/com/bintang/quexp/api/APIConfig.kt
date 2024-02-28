@@ -1,6 +1,7 @@
 package com.bintang.quexp.api
 
 import com.bintang.quexp.data.BaseResponse
+import com.bintang.quexp.data.app.HomeResponse
 import com.bintang.quexp.data.awards.AwardsResponse
 import com.bintang.quexp.data.banner.BannerResponse
 import com.bintang.quexp.data.category.CategoryResponse
@@ -205,4 +206,11 @@ interface APIConfig {
 
     @GET("category")
     fun category(): Call<CategoryResponse>
+
+    /**
+     * -----------------------------------  APP API  -----------------------------------
+     */
+
+    @GET("app/home")
+    fun appHome(): Call<HomeResponse>
 }
