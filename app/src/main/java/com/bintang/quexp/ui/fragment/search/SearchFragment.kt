@@ -22,7 +22,9 @@ class SearchFragment : Fragment() {
     val binding get() = _binding!!
     private lateinit var viewModel: ViewModelFactory
     private val searchViewModel: SearchViewModel by viewModels { viewModel }
-    private lateinit var placesAdapter: PlacesAdapter
+    private lateinit var placesAdapterNature: PlacesAdapter
+    private lateinit var placesAdapterFood: PlacesAdapter
+    private lateinit var placesAdapterHistory: PlacesAdapter
     private lateinit var placesSearchAdapter: PlacesSearchAdapter
 
 
@@ -40,7 +42,9 @@ class SearchFragment : Fragment() {
 
         searchViewModel.apply {
             placesResponse.observe(viewLifecycleOwner) {
-                setPlaces(it.placesPopuler)
+                setPlacesNature(it.placesNature)
+                setPlacesFood(it.placesFood)
+                setPlacesHistory(it.placesHistory)
                 setSearch(it.places)
             }
 
@@ -69,11 +73,27 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun setPlaces(it: List<PlacesItem>) {
-        placesAdapter = PlacesAdapter(it)
-        binding.rvPlaces.apply {
+    private fun setPlacesNature(it: List<PlacesItem>) {
+        placesAdapterNature = PlacesAdapter(it)
+        binding.rvPlacesNature.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = placesAdapter
+            adapter = placesAdapterNature
+        }
+    }
+
+    private fun setPlacesFood(it: List<PlacesItem>) {
+        placesAdapterFood = PlacesAdapter(it)
+        binding.rvPlacesFood.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = placesAdapterFood
+        }
+    }
+
+    private fun setPlacesHistory(it: List<PlacesItem>) {
+        placesAdapterHistory = PlacesAdapter(it)
+        binding.rvPlacesHistory.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = placesAdapterHistory
         }
     }
 
