@@ -33,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
                 when (navController.currentDestination?.id) {
                     R.id.home -> finish()
                     R.id.search,
-                    R.id.scan,
+                    R.id.unusedScan,
                     R.id.ar,
                     R.id.profile -> {
                         binding.bottomNav.findViewById<View>(R.id.home)

@@ -24,7 +24,8 @@
         android:layout_height="?attr/actionBarSize"
         app:itemActiveIndicatorStyle="@android:color/transparent"
         app:itemIconTint="@drawable/bg_selected_menu"
-        app:labelVisibilityMode="unlabeled"
+        app:itemTextColor="@drawable/bg_selected_menu"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_home" />
 

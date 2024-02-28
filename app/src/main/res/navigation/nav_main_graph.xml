@@ -11,10 +11,10 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/scan"
+        android:id="@+id/unusedScan"
         android:name="com.bintang.quexp.ui.fragment.scan.QrCodeFragment"
         android:label="fragment_qr_code"
-        tools:layout="@layout/fragment_qr_code" /><action android:id="@+id/action_global_scan" app:destination="@id/scan"/>
+        tools:layout="@layout/fragment_qr_code" />
     <fragment
         android:id="@+id/ar"
         android:name="com.bintang.quexp.ui.fragment.ar.AugmentedRealityFragment"
@@ -30,4 +30,9 @@
         android:name="com.bintang.quexp.ui.fragment.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/scan"
+        android:name="com.bintang.quexp.ui.fragment.scan.ZxingQrCodeFragment"
+        android:label="fragment_zxing_qr_code"
+        tools:layout="@layout/fragment_zxing_qr_code" />
 </navigation>

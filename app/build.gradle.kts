@@ -72,4 +72,5 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.gorisse.thomas.sceneform:sceneform:1.23.0")
     implementation("com.github.smarteist:autoimageslider:1.4.0")
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
 }

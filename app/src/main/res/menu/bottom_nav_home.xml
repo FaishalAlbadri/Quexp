@@ -4,26 +4,26 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_menu_home"
-        android:title="" />
+        android:title="Home" />
 
     <item
         android:id="@+id/search"
         android:icon="@drawable/ic_menu_search"
-        android:title="" />
+        android:title="Search" />
 
     <item
         android:id="@+id/scan"
         android:icon="@drawable/ic_menu_scan"
-        android:title="" />
+        android:title="Scan" />
 
     <item
         android:id="@+id/ar"
         android:icon="@drawable/ic_menu_ar"
-        android:title="" />
+        android:title="AR" />
 
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_menu_profile"
-        android:title="" />
+        android:title="Profile" />
 
 </menu>
