@@ -29,12 +29,12 @@ class RoadmapAdapter(val roadmapList: List<RoadmapItem>) :
                 txtAwards.text = data.awardsRuleTitle
                 txtAwardsValue.text = data.awardsRuleDesc
                 Glide.with(itemView.context)
-                    .load(APIConfig.URL_IMG_AWARDS + data.awardsRuleImg)
+                    .load(APIConfig.URL_IMG_AWARDS + data.awardsRuleImg + ".png")
                     .centerInside()
                     .into(imgAwards)
 
                 Glide.with(itemView.context)
-                    .load(APIConfig.URL_IMG_AWARDS_BANNER + data.awardsRuleImg)
+                    .load(APIConfig.URL_IMG_AWARDS_BANNER + data.awardsRuleImg + ".jpg")
                     .centerCrop()
                     .into(imgAwardsBanner)
 

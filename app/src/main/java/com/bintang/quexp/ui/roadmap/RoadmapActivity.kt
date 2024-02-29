@@ -29,6 +29,7 @@ class RoadmapActivity : AppCompatActivity() {
     private lateinit var viewModel: ViewModelFactory
     private val roadmapViewModel: RoadmapViewModel by viewModels { viewModel }
     private lateinit var roadmapAdapter: RoadmapAdapter
+    private lateinit var idCategory: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,7 @@ class RoadmapActivity : AppCompatActivity() {
         _binding = ActivityRoadmapBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelFactory.getInstance(this)
+        idCategory = getDataIntent("id")
 
         binding.apply {
             btnBack.setOnClickListener {
@@ -57,7 +59,7 @@ class RoadmapActivity : AppCompatActivity() {
             }
         }
 
-        roadmapViewModel.roadmap()
+        roadmapViewModel.roadmap(idCategory)
     }
 
     private fun setRoadmap(it: List<RoadmapItem>) {
@@ -77,6 +79,10 @@ class RoadmapActivity : AppCompatActivity() {
         } else {
             binding.loading.root.visibility = View.GONE
         }
+    }
+
+    fun getDataIntent(string: String): String {
+        return intent.getStringExtra(string).toString()
     }
 
 }

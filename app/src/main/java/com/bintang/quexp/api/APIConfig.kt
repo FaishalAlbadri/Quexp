@@ -180,7 +180,8 @@ interface APIConfig {
     @FormUrlEncoded
     @POST("awards/roadmap")
     fun roadmap(
-        @Field("id_user") id_user: String
+        @Field("id_user") id_user: String,
+        @Field("id_category") id_category: String
     ): Call<RoadmapResponse>
 
     /**
