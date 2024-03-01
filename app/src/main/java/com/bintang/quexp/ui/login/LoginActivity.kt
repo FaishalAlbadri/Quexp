@@ -40,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
 
         createLoading()
 
+
         binding.apply {
             btnRegister.apply {
                 text = htmlStringFormat(this@LoginActivity, "Belum punya akun?", "Daftar")
