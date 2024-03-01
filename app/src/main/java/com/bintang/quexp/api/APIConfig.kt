@@ -1,6 +1,7 @@
 package com.bintang.quexp.api
 
 import com.bintang.quexp.data.BaseResponse
+import com.bintang.quexp.data.app.HomeResponse
 import com.bintang.quexp.data.awards.AwardsResponse
 import com.bintang.quexp.data.banner.BannerResponse
 import com.bintang.quexp.data.category.CategoryResponse
@@ -179,7 +180,8 @@ interface APIConfig {
     @FormUrlEncoded
     @POST("awards/roadmap")
     fun roadmap(
-        @Field("id_user") id_user: String
+        @Field("id_user") id_user: String,
+        @Field("id_category") id_category: String
     ): Call<RoadmapResponse>
 
     /**
@@ -205,4 +207,11 @@ interface APIConfig {
 
     @GET("category")
     fun category(): Call<CategoryResponse>
+
+    /**
+     * -----------------------------------  APP API  -----------------------------------
+     */
+
+    @GET("app/home")
+    fun appHome(): Call<HomeResponse>
 }

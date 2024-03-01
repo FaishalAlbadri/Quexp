@@ -30,9 +30,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
+        android:hardwareAccelerated="true"
         android:theme="@style/Theme.Quexp"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.fragment.scan.SmallCaptureActivity"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+
         <activity
             android:name=".ui.setting.change.profile.ChangeProfileActivity"
             android:exported="false" />

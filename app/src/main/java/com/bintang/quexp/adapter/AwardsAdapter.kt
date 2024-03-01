@@ -28,7 +28,7 @@ class AwardsAdapter(val awardsList: List<AwardsItem>) :
             binding.apply {
                 txtAwards.text = data.awardsRuleTitle
                 Glide.with(itemView.context)
-                    .load(URL_IMG_AWARDS + data.awardsRuleImg)
+                    .load(URL_IMG_AWARDS + data.awardsRuleImg + ".png")
                     .centerInside()
                     .into(imgAwards)
 
@@ -39,7 +39,7 @@ class AwardsAdapter(val awardsList: List<AwardsItem>) :
                             ShareAwardsActivity::class.java
                         )
                             .putExtra("title", data.awardsRuleTitle)
-                            .putExtra("img", data.awardsRuleImg)
+                            .putExtra("img", data.awardsRuleImg + ".png")
                             .putExtra("desc", data.awardsRuleDesc)
                     )
                 }

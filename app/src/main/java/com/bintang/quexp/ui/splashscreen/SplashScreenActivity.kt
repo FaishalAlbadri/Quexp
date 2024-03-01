@@ -50,7 +50,7 @@ class SplashScreenActivity : AppCompatActivity() {
             }
 
             userResponse.observe(this@SplashScreenActivity) {
-                saveSession(UserData(it.idUser, it.userName, it.userToken, true))
+                saveSession(UserData(it.idUser, it.userName, it.userToken, true, false, false))
                 startActivity(Intent(this@SplashScreenActivity, HomeActivity::class.java))
                 finish()
             }

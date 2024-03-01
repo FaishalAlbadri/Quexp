@@ -31,10 +31,10 @@ class RoadmapViewModel(private val userPreferences: UserPreferences) : ViewModel
     private val _message = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>> = _message
 
-    fun roadmap() {
+    fun roadmap(id_category: String) {
         viewModelScope.launch {
             _isLoading.value = true
-            val client = APIConfig.build(getTokenUser()).roadmap(getIdUser())
+            val client = APIConfig.build(getTokenUser()).roadmap(getIdUser(), id_category)
             client.enqueue(object : Callback<RoadmapResponse> {
                 override fun onResponse(
                     call: Call<RoadmapResponse>,
