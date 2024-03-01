@@ -15,6 +15,8 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     private val USER_NAME_KEY = stringPreferencesKey("user_name")
     private val USER_TOKEN_KEY = stringPreferencesKey("user_token")
     private val STATE_KEY = booleanPreferencesKey("state")
+    private val FEATURE_DISCOVERY_KEY = booleanPreferencesKey("feature_discovery")
+    private val AR_DISCOVERY_KEY = booleanPreferencesKey("ar_discovery")
 
     fun getSession(): Flow<UserData> {
         return dataStore.data.map { preferences ->
@@ -22,7 +24,9 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
                 preferences[ID_USER_KEY] ?: "",
                 preferences[USER_NAME_KEY] ?: "",
                 preferences[USER_TOKEN_KEY] ?: "",
-                preferences[STATE_KEY] ?: false
+                preferences[STATE_KEY] ?: false,
+                preferences[FEATURE_DISCOVERY_KEY] ?: false,
+                preferences[AR_DISCOVERY_KEY] ?: false
             )
         }
     }
@@ -33,6 +37,18 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
             preferences[USER_NAME_KEY] = user.user_name
             preferences[USER_TOKEN_KEY] = user.user_token
             preferences[STATE_KEY] = user.isLogin
+        }
+    }
+
+    suspend fun saveFeatureDiscovery(boolean: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[FEATURE_DISCOVERY_KEY] = boolean
+        }
+    }
+
+    suspend fun saveARDiscovery(boolean: Boolean) {
+        dataStore.edit { preferences ->
+            preferences[AR_DISCOVERY_KEY] = boolean
         }
     }
 
