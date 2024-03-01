@@ -91,9 +91,17 @@ class ZxingQrCodeFragment : Fragment() {
             setPrompt("Quexp QR Code")
             setOrientationLocked(false)
             setBeepEnabled(false)
-            setTorchEnabled(true)
+            setTorchEnabled(false)
             setCaptureActivity(SmallCaptureActivity::class.java)
         }
+
+        binding.btnFlashlight.setOnCheckedChangeListener({ view, isChecked ->
+            if (isChecked) {
+                scanOptions.setTorchEnabled(true)
+            } else {
+                scanOptions.setTorchEnabled(false)
+            }
+        })
 
         fragmentLauncher.launch(scanOptions)
     }
