@@ -17,6 +17,7 @@ import com.bintang.quexp.ui.setting.change.password.ChangePasswordViewModel
 import com.bintang.quexp.ui.setting.change.profile.ChangeProfileViewModel
 import com.bintang.quexp.ui.share.ShareViewModel
 import com.bintang.quexp.ui.splashscreen.SplashScreenViewModel
+import com.bintang.quexp.util.PreferencesViewModel
 import com.bintang.quexp.util.UserPreferences
 
 class ViewModelFactory(private val userPreferences: UserPreferences) : ViewModelProvider.NewInstanceFactory() {
@@ -74,6 +75,9 @@ class ViewModelFactory(private val userPreferences: UserPreferences) : ViewModel
             }
             modelClass.isAssignableFrom(ChangeProfileViewModel::class.java) -> {
                 ChangeProfileViewModel(userPreferences) as T
+            }
+            modelClass.isAssignableFrom(PreferencesViewModel::class.java) -> {
+                PreferencesViewModel(userPreferences) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
