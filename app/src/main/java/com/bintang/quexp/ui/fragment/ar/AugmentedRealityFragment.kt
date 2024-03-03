@@ -7,13 +7,17 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bintang.quexp.R
 import com.bintang.quexp.adapter.ARAdapter
+import com.bintang.quexp.adapter.DiscoveredARAdapter
 import com.bintang.quexp.data.local.ARData
 import com.bintang.quexp.databinding.FragmentAugmentedRealityBinding
+import com.bintang.quexp.util.PreferencesViewModel
+import com.bintang.quexp.util.viewmodel.ViewModelFactory
 import com.google.ar.core.HitResult
 import com.google.ar.core.Plane
 import com.google.ar.sceneform.AnchorNode
@@ -30,8 +34,11 @@ class AugmentedRealityFragment : Fragment() {
     private var _binding: FragmentAugmentedRealityBinding? = null
     val binding get() = _binding!!
 
+    private lateinit var viewModelFactory: ViewModelFactory
+    private val preferencesViewModel: PreferencesViewModel by viewModels { viewModelFactory }
     private val viewModel by viewModels<AugmentedRealityViewModel>()
     private lateinit var arAdapter: ARAdapter
+    private lateinit var discoveredARAdapter: DiscoveredARAdapter
     private lateinit var arFragment: ArFragment
     private val arSceneView get() = arFragment.arSceneView
     private val scene get() = arSceneView.scene
@@ -49,6 +56,7 @@ class AugmentedRealityFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModelFactory = ViewModelFactory.getInstance(requireContext())
         arFragment = (childFragmentManager.findFragmentById(R.id.fragment_ar) as ArFragment).apply {
             setOnSessionConfigurationListener { session, config ->
             }
@@ -63,9 +71,40 @@ class AugmentedRealityFragment : Fragment() {
                 setArList(it)
                 loadModels(it[0].ar)
             }
+            discoveredData.observe(viewLifecycleOwner) {
+                setDiscoveredList(it)
+            }
+            getDiscoveredData()
             getArData()
         }
 
+        binding.apply {
+            btnDiscovered.setOnClickListener {
+                discoveredAr.visibility = View.VISIBLE
+            }
+
+            btnNext.setOnClickListener {
+                discoveredAr.visibility = View.GONE
+            }
+        }
+
+        preferencesViewModel.apply {
+            getSessionUser().observe(viewLifecycleOwner) {
+                if (!it.arDiscovery) {
+                    binding.discoveredAr.visibility = View.VISIBLE
+                    saveARDiscovery()
+                }
+            }
+        }
+
+    }
+
+    private fun setDiscoveredList(it: MutableList<String>) {
+        discoveredARAdapter = DiscoveredARAdapter(it)
+        binding.rvDiscovered.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = discoveredARAdapter
+        }
     }
 
     private fun setArList(it: List<ARData>) {

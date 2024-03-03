@@ -12,6 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <ImageView
+        android:id="@+id/btn_discovered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:foreground="?attr/selectableItemBackground"
+        android:src="@drawable/ic_information"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_ar"
         android:layout_width="match_parent"
@@ -20,5 +31,61 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:itemCount="1"
         tools:listitem="@layout/item_ar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/discovered_ar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_discovered_ar"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins"
+            android:text="Petunjuk AR"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_discovered"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_information_ar"
+            android:nestedScrollingEnabled="false"
+            android:padding="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_next"
+            app:layout_constraintLeft_toLeftOf="@+id/btn_next"
+            app:layout_constraintRight_toRightOf="@+id/btn_next"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_discovered_ar" />
+
+        <TextView
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/bg_circle_white_transparent"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:text="Mainkan AR Sekarang"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
