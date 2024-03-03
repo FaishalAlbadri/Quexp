@@ -138,6 +138,7 @@ class ChangeProfileActivity : AppCompatActivity() {
                         "Berhasil ubah profile",
                         Toast.LENGTH_SHORT
                     ).show()
+                    saveSession(edtUsername.text.toString())
                     onBackPressedCallback.handleOnBackPressed()
                 }
             }

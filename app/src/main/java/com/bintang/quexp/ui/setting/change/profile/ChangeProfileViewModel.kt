@@ -4,9 +4,11 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.bintang.quexp.api.APIConfig
 import com.bintang.quexp.data.BaseResponse
+import com.bintang.quexp.data.local.UserData
 import com.bintang.quexp.util.UserPreferences
 import com.bintang.quexp.util.viewmodel.Event
 import kotlinx.coroutines.flow.first
@@ -78,5 +80,11 @@ class ChangeProfileViewModel(private val userPreferences: UserPreferences) : Vie
 
     suspend fun getIdUser(): String {
         return userPreferences.getSession().first().id_user
+    }
+
+    fun saveSession(userName: String) {
+        viewModelScope.launch {
+            userPreferences.saveSession(UserData(getIdUser(), userName, getTokenUser(), true, false, false))
+        }
     }
 }
