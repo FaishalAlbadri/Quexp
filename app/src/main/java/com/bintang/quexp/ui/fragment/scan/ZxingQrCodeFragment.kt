@@ -7,6 +7,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
@@ -19,12 +20,14 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bintang.quexp.databinding.FragmentZxingQrCodeBinding
+import com.bintang.quexp.ui.animation.Preset
 import com.bintang.quexp.util.createAlertDialog
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
+import nl.dionsegijn.konfetti.xml.KonfettiView
 import java.util.Locale
 
 class ZxingQrCodeFragment : Fragment() {
@@ -36,6 +39,10 @@ class ZxingQrCodeFragment : Fragment() {
     private val qrCodeViewModel: QrCodeViewModel by viewModels { viewModel }
 
     private lateinit var loading: AlertDialog
+
+    private lateinit var viewKonfetti: KonfettiView
+
+    private lateinit var mediaPlayer: MediaPlayer
 
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private var placeId = ""
@@ -62,6 +69,7 @@ class ZxingQrCodeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
         viewModel = ViewModelFactory.getInstance(requireContext())
+        viewKonfetti = binding.viewKonfetti
 
         setupPermissions()
         createLoading()
@@ -73,6 +81,10 @@ class ZxingQrCodeFragment : Fragment() {
             message.observe(viewLifecycleOwner) {
                 it.getContentIfNotHandled()?.let {
                     binding.txtScan.text = it
+                    if (it.startsWith("Berhasil")) {
+                        soundEffect()
+                        explode()
+                    }
                 }
             }
         }
@@ -236,5 +248,16 @@ class ZxingQrCodeFragment : Fragment() {
     companion object {
         private const val CAMERA_REQ = 101
         private const val LOCATION_REQ = 69
+    }
+
+    private fun explode() {
+        for (i in 1..3) {
+            viewKonfetti.start(Preset.explode())
+        }
+    }
+
+    private fun soundEffect() {
+        mediaPlayer = MediaPlayer.create(requireActivity(), com.bintang.quexp.R.raw.beep)
+        mediaPlayer.start()
     }
 }

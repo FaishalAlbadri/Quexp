@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.scan.ZxingQrCodeFragment">
 
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/view_konfetti"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
     <TextView
         android:id="@+id/txt_scan"
         android:layout_width="wrap_content"

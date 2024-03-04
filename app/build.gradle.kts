@@ -74,4 +74,5 @@ dependencies {
     implementation("com.github.smarteist:autoimageslider:1.4.0")
     implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation("com.getkeepsafe.taptargetview:taptargetview:1.13.3")
+    implementation("nl.dionsegijn:konfetti-xml:2.0.4")
 }
