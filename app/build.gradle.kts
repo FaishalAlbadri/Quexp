@@ -73,4 +73,5 @@ dependencies {
     implementation("com.gorisse.thomas.sceneform:sceneform:1.23.0")
     implementation("com.github.smarteist:autoimageslider:1.4.0")
     implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation("com.getkeepsafe.taptargetview:taptargetview:1.13.3")
 }

@@ -8,6 +8,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bintang.quexp.R
 import com.bintang.quexp.adapter.RoadmapAdapter
 import com.bintang.quexp.data.roadmap.RoadmapItem
 import com.bintang.quexp.databinding.ActivityRoadmapBinding
@@ -43,10 +44,20 @@ class RoadmapActivity : AppCompatActivity() {
             btnBack.setOnClickListener {
                 onBackPressedCallback.handleOnBackPressed()
             }
+            if (idCategory.equals("1")) {
+                imgTopRoadmap.setImageResource(R.drawable.ic_top_nature)
+                imgBottomRoadmap.setImageResource(R.drawable.ic_bottom_nature)
+            } else if (idCategory.equals("2")) {
+                imgTopRoadmap.setImageResource(R.drawable.ic_top_food)
+                imgBottomRoadmap.setImageResource(R.drawable.ic_bottom_food)
+            } else {
+                imgTopRoadmap.setImageResource(R.drawable.ic_top_history)
+                imgBottomRoadmap.setImageResource(R.drawable.ic_bottom_history)
+            }
         }
 
         roadmapViewModel.apply {
-            roadmapResponse.observe(this@RoadmapActivity){
+            roadmapResponse.observe(this@RoadmapActivity) {
                 setRoadmap(it)
             }
             isLoading.observe(this@RoadmapActivity) {
