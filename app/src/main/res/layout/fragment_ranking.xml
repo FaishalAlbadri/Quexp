@@ -41,10 +41,28 @@
                 app:layout_constraintTop_toBottomOf="@+id/img_ranking_1" />
 
             <TextView
+                android:id="@+id/txt_ranking_number_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@color/silver"
+                android:fontFamily="@font/plusjakartasansbold"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="2"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_ranking_2"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintLeft_toLeftOf="@+id/img_ranking_2"
+                app:layout_constraintRight_toRightOf="@+id/img_ranking_2"
+                app:layout_constraintTop_toBottomOf="@+id/img_ranking_2" />
+
+            <TextView
                 android:id="@+id/txt_username_ranking_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/plusjakartasansbold"
                 android:gravity="center"
@@ -53,7 +71,7 @@
                 android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="@+id/img_ranking_2"
                 app:layout_constraintRight_toRightOf="@+id/img_ranking_2"
-                app:layout_constraintTop_toBottomOf="@+id/img_ranking_2"
+                app:layout_constraintTop_toBottomOf="@+id/txt_ranking_number_2"
                 tools:text="Ahmad Faishal Albadri" />
 
             <TextView
@@ -84,10 +102,28 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/txt_ranking_number_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@color/gold"
+                android:fontFamily="@font/plusjakartasansbold"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="1"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_ranking_1"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintLeft_toLeftOf="@+id/img_ranking_1"
+                app:layout_constraintRight_toRightOf="@+id/img_ranking_1"
+                app:layout_constraintTop_toBottomOf="@+id/img_ranking_1" />
+
+            <TextView
                 android:id="@+id/txt_username_ranking_1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/plusjakartasansbold"
                 android:gravity="center"
@@ -96,7 +132,7 @@
                 android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="@+id/img_ranking_1"
                 app:layout_constraintRight_toRightOf="@+id/img_ranking_1"
-                app:layout_constraintTop_toBottomOf="@+id/img_ranking_1"
+                app:layout_constraintTop_toBottomOf="@+id/txt_ranking_number_1"
                 tools:text="Ahmad Faishal Albadri" />
 
             <TextView
@@ -127,10 +163,28 @@
                 app:layout_constraintTop_toTopOf="@id/img_ranking_2" />
 
             <TextView
+                android:id="@+id/txt_ranking_number_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@color/bronze"
+                android:fontFamily="@font/plusjakartasansbold"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="3"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_ranking_3"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintLeft_toLeftOf="@+id/img_ranking_3"
+                app:layout_constraintRight_toRightOf="@+id/img_ranking_3"
+                app:layout_constraintTop_toBottomOf="@+id/img_ranking_3" />
+
+            <TextView
                 android:id="@+id/txt_username_ranking_3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/plusjakartasansbold"
                 android:gravity="center"
@@ -139,7 +193,7 @@
                 android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="@+id/img_ranking_3"
                 app:layout_constraintRight_toRightOf="@+id/img_ranking_3"
-                app:layout_constraintTop_toBottomOf="@+id/img_ranking_3"
+                app:layout_constraintTop_toBottomOf="@+id/txt_ranking_number_3"
                 tools:text="Ahmad Faishal Albadri" />
 
             <TextView
