@@ -28,7 +28,8 @@ class ProfileFragment : Fragment() {
     private val profileViewModel: ProfileViewModel by viewModels { viewModel }
     val pageContent = arrayOf(
         "Lencana",
-        "Dikunjungi"
+        "Dikunjungi",
+        "Peringkat"
     )
 
     override fun onCreateView(

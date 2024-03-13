@@ -9,6 +9,7 @@ import com.bintang.quexp.data.visited.VisitedResponse
 import com.bintang.quexp.data.news.NewsResponse
 import com.bintang.quexp.data.notification.NotificationResponse
 import com.bintang.quexp.data.places.PlacesResponse
+import com.bintang.quexp.data.ranking.RankingResponse
 import com.bintang.quexp.data.roadmap.RoadmapResponse
 import com.bintang.quexp.data.user.UserResponse
 import okhttp3.OkHttpClient
@@ -183,6 +184,9 @@ interface APIConfig {
         @Field("id_user") id_user: String,
         @Field("id_category") id_category: String
     ): Call<RoadmapResponse>
+
+    @GET("awards/ranking")
+    fun ranking(): Call<RankingResponse>
 
     /**
      * -----------------------------------  Notification API  -----------------------------------

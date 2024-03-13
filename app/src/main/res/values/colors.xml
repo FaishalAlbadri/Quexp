@@ -16,4 +16,9 @@
     <color name="goldenYellow">#FCD240</color>
     <color name="gray_ad">#adadad</color>
     <color name="gray_33">#333333</color>
+    <color name="gray_31">#313030</color>
+
+    <color name="gold">#d4af37</color>
+    <color name="silver">#c0c0c0</color>
+    <color name="bronze">#cd7f32</color>
 </resources>

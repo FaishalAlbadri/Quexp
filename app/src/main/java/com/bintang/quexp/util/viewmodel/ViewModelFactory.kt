@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bintang.quexp.ui.fragment.awards.AwardsViewModel
 import com.bintang.quexp.ui.fragment.home.HomeViewModel
 import com.bintang.quexp.ui.fragment.profile.ProfileViewModel
+import com.bintang.quexp.ui.fragment.ranking.RankingViewModel
 import com.bintang.quexp.ui.fragment.scan.QrCodeViewModel
 import com.bintang.quexp.ui.fragment.search.SearchViewModel
 import com.bintang.quexp.ui.fragment.visited.VisitedViewModel
@@ -78,6 +79,9 @@ class ViewModelFactory(private val userPreferences: UserPreferences) : ViewModel
             }
             modelClass.isAssignableFrom(PreferencesViewModel::class.java) -> {
                 PreferencesViewModel(userPreferences) as T
+            }
+            modelClass.isAssignableFrom(RankingViewModel::class.java) -> {
+                RankingViewModel(userPreferences) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
