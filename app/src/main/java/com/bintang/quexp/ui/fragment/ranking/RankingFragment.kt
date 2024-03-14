@@ -51,7 +51,7 @@ class RankingFragment : Fragment() {
     private fun setRanking(it: List<RankingItem>) {
         val newRank: MutableList<RankingItem> = arrayListOf()
         it.forEachIndexed { index, rankingItem ->
-            if (index > 3) {
+            if (index > 2) {
                 newRank.add(rankingItem)
             } else {
                 binding.apply {
@@ -63,7 +63,7 @@ class RankingFragment : Fragment() {
                         imgRanking2.loadCircularImage(rankingItem.userImg, 8F, ContextCompat.getColor(requireContext(), R.color.silver))
                         txtUsernameRanking2.text = rankingItem.userName
                         txtRanking2.text = "${rankingItem.count} Lencana"
-                    } else {
+                    } else if (index == 2) {
                         imgRanking3.loadCircularImage(rankingItem.userImg, 8F, ContextCompat.getColor(requireContext(), R.color.bronze))
                         txtUsernameRanking3.text = rankingItem.userName
                         txtRanking3.text = "${rankingItem.count} Lencana"
