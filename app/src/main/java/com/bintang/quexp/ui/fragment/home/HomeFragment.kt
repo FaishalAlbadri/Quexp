@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bintang.quexp.R
 import com.bintang.quexp.adapter.NewsAdapter
 import com.bintang.quexp.adapter.BannerAdapter
 import com.bintang.quexp.adapter.CategoryRoadmapAdapter
@@ -18,9 +19,14 @@ import com.bintang.quexp.data.banner.BannerItem
 import com.bintang.quexp.data.category.CategoryItem
 import com.bintang.quexp.data.news.NewsItem
 import com.bintang.quexp.data.places.PlacesItem
+import com.bintang.quexp.data.ranking.RankingItem
 import com.bintang.quexp.databinding.FragmentHomeBinding
 import com.bintang.quexp.ui.notification.NotificationActivity
+import com.bintang.quexp.util.loadCircularImage
 import com.bintang.quexp.util.viewmodel.ViewModelFactory
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.smarteist.autoimageslider.SliderView
 
 class HomeFragment : Fragment() {
@@ -73,6 +79,10 @@ class HomeFragment : Fragment() {
                 setNews(it)
             }
 
+            rankingResponse.observe(viewLifecycleOwner) {
+                setRanking(it)
+            }
+
             isLoading.observe(viewLifecycleOwner) {
                 showLoading(it)
             }
@@ -82,6 +92,19 @@ class HomeFragment : Fragment() {
                 }
             }
             home()
+        }
+    }
+
+    private fun setRanking(it: List<RankingItem>) {
+        binding.apply {
+            it[0].apply {
+                imgProfile.loadCircularImage(userImg, 0F)
+                txtRanked.text = "Peringkat ${ranking}"
+                txtBadge.text = "${count} Lencana"
+                if (count == 0) {
+                    txtRanked.text = ranking
+                }
+            }
         }
     }
 

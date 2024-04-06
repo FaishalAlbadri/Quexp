@@ -8,10 +8,13 @@ data class RankingItem(
 	val userName: String,
 
 	@field:SerializedName("count")
-	val count: String,
+	val count: Int,
 
 	@field:SerializedName("id_user")
 	val idUser: String,
+
+	@field:SerializedName("ranking")
+	val ranking: String,
 
 	@field:SerializedName("user_img")
 	val userImg: String

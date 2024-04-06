@@ -215,7 +215,9 @@ interface APIConfig {
     /**
      * -----------------------------------  APP API  -----------------------------------
      */
-
-    @GET("app/home")
-    fun appHome(): Call<HomeResponse>
+    @FormUrlEncoded
+    @POST("app/home")
+    fun appHome(
+        @Field("id_user") id_user: String
+    ): Call<HomeResponse>
 }

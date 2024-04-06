@@ -13,6 +13,7 @@ import com.bintang.quexp.data.category.CategoryItem
 import com.bintang.quexp.data.local.UserData
 import com.bintang.quexp.data.news.NewsItem
 import com.bintang.quexp.data.places.PlacesItem
+import com.bintang.quexp.data.ranking.RankingItem
 import com.bintang.quexp.util.UserPreferences
 import com.bintang.quexp.util.viewmodel.Event
 import kotlinx.coroutines.flow.first
@@ -42,13 +43,16 @@ class HomeViewModel(private val userPreferences: UserPreferences) : ViewModel() 
     private val _placesResponse = MutableLiveData<List<PlacesItem>>()
     val placesResponse: LiveData<List<PlacesItem>> = _placesResponse
 
+    private val _rankingResponse = MutableLiveData<List<RankingItem>>()
+    val rankingResponse: LiveData<List<RankingItem>> = _rankingResponse
+
     private val _message = MutableLiveData<Event<String>>()
     val message: LiveData<Event<String>> = _message
 
     fun home() {
         viewModelScope.launch {
             _isLoading.value = true
-            val client = APIConfig.build(getTokenUser()).appHome()
+            val client = APIConfig.build(getTokenUser()).appHome(getIdUser())
             client.enqueue(object : Callback<HomeResponse> {
                 override fun onResponse(
                     call: Call<HomeResponse>,
@@ -62,6 +66,7 @@ class HomeViewModel(private val userPreferences: UserPreferences) : ViewModel() 
                             _categoryResponse.value = homeResponse.category
                             _newsResponse.value = homeResponse.news
                             _placesResponse.value = homeResponse.placesPopuler
+                            _rankingResponse.value = homeResponse.ranking
                         } else {
                             _message.value = Event(homeResponse.message)
                         }
