@@ -10,6 +10,9 @@ import android.location.LocationManager
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.provider.Settings
+import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +22,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bintang.quexp.R
 import com.bintang.quexp.databinding.FragmentZxingQrCodeBinding
 import com.bintang.quexp.ui.animation.Preset
 import com.bintang.quexp.util.createAlertDialog
@@ -30,7 +34,7 @@ import com.journeyapps.barcodescanner.ScanOptions
 import nl.dionsegijn.konfetti.xml.KonfettiView
 import java.util.Locale
 
-class ZxingQrCodeFragment : Fragment() {
+class ZxingQrCodeFragment : Fragment(), TextToSpeech.OnInitListener {
 
     private var _binding: FragmentZxingQrCodeBinding? = null
     val binding get() = _binding!!
@@ -43,6 +47,8 @@ class ZxingQrCodeFragment : Fragment() {
     private lateinit var viewKonfetti: KonfettiView
 
     private lateinit var mediaPlayer: MediaPlayer
+
+    private lateinit var tts: TextToSpeech
 
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private var placeId = ""
@@ -87,13 +93,64 @@ class ZxingQrCodeFragment : Fragment() {
                     }
                 }
             }
+            placeDesc.observe(viewLifecycleOwner){
+                it.getContentIfNotHandled()?.let {
+                    binding.txtTts.apply {
+                        text = it
+                    }
+                }
+            }
         }
 
         setupScan()
+        setupTTS()
 
-        binding.btnScan.setOnClickListener {
-            fragmentLauncher.launch(scanOptions)
+        binding.apply {
+
+            btnScan.setOnClickListener {
+                fragmentLauncher.launch(scanOptions)
+            }
+
+            btnTts.setOnClickListener {
+                if (txtTts.text.isNotEmpty()){
+                    if (txtTtsStatus.text.equals("Play")) {
+                        btnTts.setImageDrawable(resources.getDrawable(R.drawable.ic_btn_stop, requireContext().theme))
+                        txtTtsStatus.text = "Stop"
+                        tts.speak(txtTts.text.toString(), TextToSpeech.QUEUE_FLUSH, null, "")
+                    } else {
+                        btnTts.setImageDrawable(resources.getDrawable(R.drawable.ic_btn_play, requireContext().theme))
+                        txtTtsStatus.text = "Play"
+                        tts.stop()
+                    }
+                }
+            }
         }
+    }
+
+    private fun setupTTS() {
+        tts = TextToSpeech(activity, this, "com.google.android.tts")
+        binding.btnTts.isEnabled = false
+        tts.setOnUtteranceProgressListener(object  : UtteranceProgressListener() {
+            override fun onStart(utteranceId: String?) {
+            }
+
+            override fun onDone(utteranceId: String?) {
+                binding.apply {
+                    btnTts.setImageDrawable(resources.getDrawable(R.drawable.ic_btn_play, requireContext().theme))
+                    txtTtsStatus.text = "Play"
+                }
+            }
+
+            override fun onError(utteranceId: String?) {
+                binding.apply {
+                    btnTts.setImageDrawable(resources.getDrawable(R.drawable.ic_btn_play, requireContext().theme))
+                    txtTtsStatus.text = "Play"
+                }
+                Toast.makeText(requireContext(), "Error text to speech", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+        tts.setSpeechRate(0.7F)
     }
 
     private fun setupScan() {
@@ -259,5 +316,25 @@ class ZxingQrCodeFragment : Fragment() {
     private fun soundEffect() {
         mediaPlayer = MediaPlayer.create(requireActivity(), com.bintang.quexp.R.raw.beep)
         mediaPlayer.start()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (tts.isSpeaking) {
+            tts.stop()
+        }
+        tts.shutdown()
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val result = tts.setLanguage(Locale("id", "ID"))
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Toast.makeText(requireContext(), "Text to speech not support", Toast.LENGTH_SHORT).show()
+            } else {
+                binding.btnTts.isEnabled = true
+            }
+        }
     }
 }
