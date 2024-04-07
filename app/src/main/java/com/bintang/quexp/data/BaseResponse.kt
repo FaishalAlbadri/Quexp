@@ -6,7 +6,7 @@ data class BaseResponse(
 	@field:SerializedName("message")
 	val message: String,
 
-	@field:SerializedName("alert_message")
+	@field:SerializedName("alert_massage")
 	val alertMessage: String,
 
 	@field:SerializedName("place_desc")

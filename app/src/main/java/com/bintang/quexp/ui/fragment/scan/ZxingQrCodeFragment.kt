@@ -1,6 +1,7 @@
 package com.bintang.quexp.ui.fragment.scan
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
@@ -87,16 +88,35 @@ class ZxingQrCodeFragment : Fragment(), TextToSpeech.OnInitListener {
             message.observe(viewLifecycleOwner) {
                 it.getContentIfNotHandled()?.let {
                     binding.txtScan.text = it
-                    if (it.startsWith("Berhasil")) {
-                        soundEffect()
-                        explode()
-                    }
                 }
             }
             placeDesc.observe(viewLifecycleOwner){
                 it.getContentIfNotHandled()?.let {
                     binding.txtTts.apply {
                         text = it
+                    }
+                }
+            }
+            alertMessage.observe(viewLifecycleOwner) {
+                it.getContentIfNotHandled()?.let {
+                    if (it.startsWith("Kunjungi")) {
+                        AlertDialog.Builder(requireActivity())
+                            .setTitle("Pemberitahuan Penghargaan")
+                            .setMessage(it)
+                            .setCancelable(false)
+                            .setPositiveButton("OK", object : DialogInterface.OnClickListener {
+                                override fun onClick(dialog: DialogInterface, which: Int) {
+                                    dialog.dismiss()
+                                }
+                            })
+                            .create()
+                            .show()
+                    } else {
+                        binding.txtScan.text = it
+                        if (it.startsWith("Kamu baru saja")) {
+                            soundEffect()
+                            explode()
+                        }
                     }
                 }
             }

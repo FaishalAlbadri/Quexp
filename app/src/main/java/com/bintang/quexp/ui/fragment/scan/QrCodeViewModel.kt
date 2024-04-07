@@ -30,6 +30,9 @@ class QrCodeViewModel(private val userPreferences: UserPreferences) : ViewModel(
     private val _placeDesc = MutableLiveData<Event<String>>()
     val placeDesc: LiveData<Event<String>> = _placeDesc
 
+    private val _alertMessage = MutableLiveData<Event<String>>()
+    val alertMessage: LiveData<Event<String>> = _alertMessage
+
     fun scanQrCode(placeId: String, userLat: Double, userLong: Double) {
         viewModelScope.launch {
             _isLoading.value = true
@@ -41,6 +44,7 @@ class QrCodeViewModel(private val userPreferences: UserPreferences) : ViewModel(
                         val userResponse = response.body()!!
                         _message.value = Event(userResponse.message)
                         _placeDesc.value = Event(userResponse.placeDesc)
+                        _alertMessage.value = Event(userResponse.alertMessage)
                     } else {
                         _message.value = Event(response.message().toString())
                         Log.e(
